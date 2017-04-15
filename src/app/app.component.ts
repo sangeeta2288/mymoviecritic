@@ -14,6 +14,7 @@ title = 'MyMovieCritic';
     http: Http;
     giphies = [];
     show: boolean = true;
+    avg;
 
     
   constructor(http: Http) {
