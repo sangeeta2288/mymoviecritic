@@ -10,5 +10,15 @@ import { Http, Response } from '@angular/http';
 export class AppComponent {
    
 title = 'MyMovieCritic';
-        
+    link = 'https://www.omdbapi.com/?t=';
+    http: Http;
+    giphies = [];
+
+    
+  constructor(http: Http) {
+        this.http = http;
+    }
+
+   
+  }     
       };
