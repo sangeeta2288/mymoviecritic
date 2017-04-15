@@ -48,7 +48,18 @@
             <div class="col-md-4 portfolio-item">
                <img class="img-responsive" src="{{giphies.Poster}}" alt="" style="width:240px;height:320px;">   
             </div>
-           
+            <div class="col-md-8 portfolio-item" >
+               <div *ngIf="show; else elseBlock">Movie Details</div>
+               <ng-template #elseBlock>
+                  <h4>
+                     <span>
+                        <h3>Plot: </h3>
+                     </span>
+                     {{giphies.Plot}}
+                  </h4>
+                  
+               </ng-template>
+            </div>
             <div>
             </div>
          </div>

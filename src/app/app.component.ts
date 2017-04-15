@@ -13,6 +13,7 @@ title = 'MyMovieCritic';
     link = 'https://www.omdbapi.com/?t=';
     http: Http;
     giphies = [];
+    show: boolean = true;
 
     
   constructor(http: Http) {
