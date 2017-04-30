@@ -1,3 +1,6 @@
+<div class="alert alert-warning" *ngIf="blankSearch">
+    <strong>At-least one field should be selected to perform search!!</strong>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -12,6 +15,19 @@
                 </ss-multiselect-dropdown>
             </td>
           </tr>
+           <!-- blank row as separator-->
+          <tr style="height:20px"><td></td><td></td></tr>
+          <tr style="width:100%">
+                <td class="center-text-align">
+                    <button class="btn btn-success" type="submit" (click)="Submit()">Submit</button>
+                </td>
+                <td>
+                    <button class="btn btn-default" type="button" (click)="Reset()">
+                        <span class="glyphicon glyphicon-repeat"></span>
+                        Reset
+                    </button>
+                </td>
+            </tr>
         </table>
     </div>
         <div *ngFor="let item of results" class="col-md-12 portfolio-item">
