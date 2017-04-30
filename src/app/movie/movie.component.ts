@@ -46,6 +46,18 @@ title = 'MyMovieCritic';
       let sum = values.reduce((previous, current) => current += previous);
       this.avg = Math.round((sum / values.length)*10)/10;
       console.log(this.avg)}
+
+       makehttp(giphies:any): any {
+      this.mylink = this.mylink + this.giphies["imdbID"]; 
+      this.http.request(this.mylink)
+                      .subscribe((res: Response) => {
+                       this.view = false; 
+                      this.reviews = res.json();
+                      console.log(this.reviews);
+                      this.calculateavg(this.reviews);
+                      this.usercritichttp([]);
+                      
+                    })}
      
    
 }
