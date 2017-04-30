@@ -12,7 +12,38 @@
          <h3 *ngIf="!show">
             {{giphies.Title}}
          </h3>
-         
+         <div class="row">
+            <div class="col-md-4 portfolio-item">
+               <img *ngIf="!show" class="img-responsive" src="{{giphies.Poster}}" alt="" style="width:240px;height:320px;">   
+            </div>
+            <div class="col-md-8 portfolio-item" >
+               <div *ngIf="show; else elseBlock">Movie Details</div>
+               <ng-template #elseBlock>
+                  <h4>
+                     <span>
+                        <h3>Plot: </h3>
+                     </span>
+                     {{giphies.Plot}}
+                  </h4>
+                  <br>
+                  <h3 >  MyMovieCritic:{{avg}}/10 <span>Rotten Tomatoes:{{giphies.Ratings[1].Value}} </span></h3>
+                  <br>
+                  <h3 >MetaCritic: {{giphies.Ratings[2].Value}}  Imdb Rating: {{giphies.Ratings[0].Value}}</h3>
+                  <br>
+               </ng-template>
+            </div>
+            <div>
+            </div>
+         </div>
+      </div>
+      <!-- /.row -->
+      <!-- Projects Row -->
+      
+   </div>
+   <!-- /.row -->
+   <!-- Projects Row -->
+   <!-- /.row -->
+   <hr>
    <!-- Footer -->
    <footer>
       <div class="row">
