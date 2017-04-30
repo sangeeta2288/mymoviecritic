@@ -8,15 +8,19 @@ import { Http, Response } from '@angular/http';
 })
 
 export class AppComponent {
-   
+
 title = 'MyMovieCritic';
     link = 'https://www.omdbapi.com/?t=';
     http: Http;
     giphies = [];
     show: boolean = true;
     avg;
+    featureSelected = '';
 
-    
+  onSelect(feature: string){
+    this.featureSelected = feature;
+  }
+
   constructor(http: Http) {
         this.http = http;
     }
@@ -28,5 +32,5 @@ title = 'MyMovieCritic';
                   this.show = false;
                   this.giphies = res.json();
             });
-  }     
+  }
       };

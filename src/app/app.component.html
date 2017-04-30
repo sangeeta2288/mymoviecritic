@@ -8,19 +8,19 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#">{{title}}</a>
+         <a class="navbar-brand" href="#" (click)="onSelect('')">{{title}}</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav">
             <li>
-               <a href="#">Advanced Search</a>
+               <a href="#" (click)="onSelect('advancedSearch')">Advanced Search</a>
             </li>
             <li>
-               <a href="#">Profile</a>
+               <a href="#" (click)="onSelect('')">Profile</a>
             </li>
             <li>
-               <a href="#">Contact</a>
+               <a href="#" (click)="onSelect('')">Contact</a>
             </li>
          </ul>
       </div>
@@ -30,10 +30,11 @@
 </nav>
 <hr>
 <hr>
+<!-- Page Content -->
 <div class="container">
    <!-- Page Header -->
    <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12" *ngIf="featureSelected !== 'advancedSearch'">
          <div class="input-group">
             <input name="search" #searchTerm (keyup.enter)="performSearch(searchTerm)" type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
@@ -46,7 +47,7 @@
          </h3>
           <div class="row">
             <div class="col-md-4 portfolio-item">
-               <img class="img-responsive" src="{{giphies.Poster}}" alt="" style="width:240px;height:320px;">   
+               <img class="img-responsive" src="{{giphies.Poster}}" alt="" style="width:240px;height:320px;">
             </div>
             <div class="col-md-8 portfolio-item" >
                <div *ngIf="show; else elseBlock">Movie Details</div>
@@ -67,11 +68,12 @@
             <div>
             </div>
          </div>
-
+      </div>
+      <div *ngIf="featureSelected === 'advancedSearch'">
+          <app-advancedsearch></app-advancedsearch>
+      </div>
+      <!-- /.row -->
 
    </div>
-      <!-- /.row -->
-     
-   </div>  
 </div>
 <!-- /.container -->
