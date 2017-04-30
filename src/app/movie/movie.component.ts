@@ -45,7 +45,12 @@ export class MovieComponent implements OnInit {
                  
             });
   }
-    
+    calculateavg(reviews:any): any {
+      let values = reviews.objects.map(function(y){return y.Rating});;
+      let sum = values.reduce((previous, current) => current += previous);
+      this.avg = Math.round((sum / values.length)*10)/10;
+      console.log(this.avg)}
+
       makehttp(giphies:any): any {
       this.mylink = this.mylink + this.giphies["imdbID"]; 
       this.http.request(this.mylink)
@@ -57,12 +62,6 @@ export class MovieComponent implements OnInit {
                       this.usercritichttp([]);
                       
                     })}
-        calculateavg(reviews:any): any {
-      let values = reviews.objects.map(function(y){return y.Rating});;
-      let sum = values.reduce((previous, current) => current += previous);
-      this.avg = Math.round((sum / values.length)*10)/10;
-      console.log(this.avg)}
-            
                     
     usercritichttp(user:any): any { 
       this.http.request(this.myuserlink)
@@ -87,13 +86,12 @@ export class MovieComponent implements OnInit {
            }
          }
         });
-      console.log(this.userreviews);
-        let customvalues = this.userreviews.map(function(y){return y.Rating});;
-      let customsum = customvalues.reduce((previous, current) => current += previous);
-      this.customavg = Math.round((customsum / customvalues.length)*10)/10;
-      console.log(this.avg)
+      console.log(this.userreviews);  
     
        
-     
+      let customvalues = this.userreviews.map(function(y){return y.Rating});;
+      let customsum = customvalues.reduce((previous, current) => current += previous);
+      this.customavg = Math.round((customsum / customvalues.length)*10)/10;
+      console.log(this.customavg)
     }
 }
