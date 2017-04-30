@@ -13,6 +13,13 @@ title = 'MyMovieCritic';
     mylink = 'http://127.0.0.1:8000/api/v1/review/?format=json&tid=';
     myuserlink = "http://127.0.0.1:8000/api/v1/usercritic";
     http: Http;
+    show: boolean = true;
+    view: boolean = true;
+    giphies = [];
+    reviews = [];
+    userreviews;
+    critics;
+    avg;
 
     ngOnInit() {        
        
@@ -34,6 +41,12 @@ title = 'MyMovieCritic';
 
                  
             });
+       calculateavg(reviews:any): any {
+      let values = reviews.objects.map(function(y){return y.Rating});;
+      let sum = values.reduce((previous, current) => current += previous);
+      this.avg = Math.round((sum / values.length)*10)/10;
+      console.log(this.avg)}
+     
    
 }
 
