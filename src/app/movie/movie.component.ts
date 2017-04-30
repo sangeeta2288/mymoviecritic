@@ -58,6 +58,14 @@ title = 'MyMovieCritic';
                       this.usercritichttp([]);
                       
                     })}
+          usercritichttp(user:any): any { 
+      this.http.request(this.myuserlink)
+                      .subscribe((res: Response) => { 
+                      this.critics = res.json();
+                      console.log(this.critics);
+                       this.calculatcustomeavg(this.reviews,this.critics);
+                                        })}
+              
      
    
 }
