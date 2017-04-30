@@ -22,6 +22,18 @@ title = 'MyMovieCritic';
         this.http = http;
 
     }
+    performSearch(searchTerm: HTMLInputElement): void {
+        var apiLink = this.link + searchTerm.value;
+        this.http.request(apiLink)
+            .subscribe((res: Response) => {
+                  this.show = false;
+                  this.giphies = res.json();
+                  console.log(this.giphies);
+                  this.makehttp(this.giphies);
+                  
+
+                 
+            });
    
 }
 
