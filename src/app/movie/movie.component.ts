@@ -65,8 +65,15 @@ title = 'MyMovieCritic';
                       console.log(this.critics);
                        this.calculatcustomeavg(this.reviews,this.critics);
                                         })}
-              
+       calculatcustomeavg(reviews:any,critics:any): any {
+       
+      let usercritics = critics.objects.filter(function(x){return x.User.id == 2});
+      let usercriticsid = usercritics.map(function(x){return x.Critic.id})
+      console.log(usercriticsid);
+
+     
+            
      
    
 }
-
+    }
