@@ -1,0 +1,12 @@
+.common-border{
+    border : 1px solid black;
+}
+.center-text-align{
+    text-align: center
+}
+.right-text-align{
+    text-align: right
+}
+#multiselect .dropdown-menu{
+    transform: translate(100%, 0) !important;
+}
