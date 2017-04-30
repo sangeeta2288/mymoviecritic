@@ -8,7 +8,8 @@ import {imdb} from 'imdb-api';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
-title = 'MyMovieCritic';
+
+   title = 'MyMovieCritic';
     link = 'https://www.omdbapi.com/?t=';
     mylink = 'http://127.0.0.1:8000/api/v1/review/?format=json&tid=';
     myuserlink = "http://127.0.0.1:8000/api/v1/usercritic";
@@ -20,7 +21,8 @@ title = 'MyMovieCritic';
     userreviews;
     critics;
     avg;
-
+    customavg;
+    
     ngOnInit() {        
        
     }
@@ -29,6 +31,7 @@ title = 'MyMovieCritic';
         this.http = http;
 
     }
+
     performSearch(searchTerm: HTMLInputElement): void {
         var apiLink = this.link + searchTerm.value;
         this.http.request(apiLink)
@@ -41,13 +44,9 @@ title = 'MyMovieCritic';
 
                  
             });
-       calculateavg(reviews:any): any {
-      let values = reviews.objects.map(function(y){return y.Rating});;
-      let sum = values.reduce((previous, current) => current += previous);
-      this.avg = Math.round((sum / values.length)*10)/10;
-      console.log(this.avg)}
-
-       makehttp(giphies:any): any {
+  }
+    
+      makehttp(giphies:any): any {
       this.mylink = this.mylink + this.giphies["imdbID"]; 
       this.http.request(this.mylink)
                       .subscribe((res: Response) => {
@@ -58,14 +57,23 @@ title = 'MyMovieCritic';
                       this.usercritichttp([]);
                       
                     })}
-          usercritichttp(user:any): any { 
+        calculateavg(reviews:any): any {
+      let values = reviews.objects.map(function(y){return y.Rating});;
+      let sum = values.reduce((previous, current) => current += previous);
+      this.avg = Math.round((sum / values.length)*10)/10;
+      console.log(this.avg)}
+            
+                    
+    usercritichttp(user:any): any { 
       this.http.request(this.myuserlink)
                       .subscribe((res: Response) => { 
                       this.critics = res.json();
                       console.log(this.critics);
                        this.calculatcustomeavg(this.reviews,this.critics);
                                         })}
-       calculatcustomeavg(reviews:any,critics:any): any {
+                                      
+
+     calculatcustomeavg(reviews:any,critics:any): any {
        
       let usercritics = critics.objects.filter(function(x){return x.User.id == 2});
       let usercriticsid = usercritics.map(function(x){return x.Critic.id})
@@ -79,9 +87,13 @@ title = 'MyMovieCritic';
            }
          }
         });
-      console.log(this.userreviews);  
-            
+      console.log(this.userreviews);
+        let customvalues = this.userreviews.map(function(y){return y.Rating});;
+      let customsum = customvalues.reduce((previous, current) => current += previous);
+      this.customavg = Math.round((customsum / customvalues.length)*10)/10;
+      console.log(this.avg)
+    
+       
      
-   
-}
     }
+}
