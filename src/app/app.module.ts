@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.component';
+//import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdvancedsearchComponent
+    //AdvancedsearchComponent
   ],
   imports: [
     BrowserModule,
