@@ -71,7 +71,15 @@ title = 'MyMovieCritic';
       let usercriticsid = usercritics.map(function(x){return x.Critic.id})
       console.log(usercriticsid);
 
-     
+      console.log(reviews);
+       this.userreviews = reviews.objects.filter(function(y){
+         for(let x of usercriticsid){
+           if(y.critic.id===x){
+             return true;
+           }
+         }
+        });
+      console.log(this.userreviews);  
             
      
    
