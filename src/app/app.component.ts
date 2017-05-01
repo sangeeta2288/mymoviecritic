@@ -18,13 +18,15 @@ export class AppComponent {
     show: boolean = true;
     avg;
     featureSelected = '';
+    location: Location;
 
   onSelect(feature: string){
     this.featureSelected = feature;
   }
 
-  constructor(http: Http) {
+  constructor(http: Http, location: Location) {
         this.http = http;
+        this.location = location;
     }
 
     performSearch(searchTerm: HTMLInputElement): void {
