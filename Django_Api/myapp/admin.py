@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Critic, Review, User
+from .models import Critic, Review, UserCritic, User
 
 class CriticAdmin(admin.ModelAdmin):
 	list_display = ['name']
@@ -12,12 +12,15 @@ class ReviewAdmin(admin.ModelAdmin):
 	
 	critic_name.admin_order_field = 'critic'
 
-class UseradminAdmin(admin.ModelAdmin):
-	list_display = ['name', 'critic']		
+
+	
+class UserCriticAdmin(admin.ModelAdmin):
+	list_display = ['name', 'critic', 'user']		
 
 
 admin.site.register(Critic,CriticAdmin)
 admin.site.register(Review,ReviewAdmin)
-admin.site.register(User,UseradminAdmin)
+
+admin.site.register(UserCritic,UserCriticAdmin)
 
 # create a new superuser in order to access the admin area
