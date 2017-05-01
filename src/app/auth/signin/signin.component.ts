@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -10,6 +11,11 @@ export class SigninComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSignin(form: NgForm) {
+    const username = form.value.username;
+    const password = form.value.password;
   }
 
 }
