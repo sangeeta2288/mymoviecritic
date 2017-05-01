@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Http, Response } from '@angular/http';
 
 export class AppComponent {
 
-title = 'MyMovieCritic';
+    title = 'MyMovieCritic';
     link = 'https://www.omdbapi.com/?t=';
     http: Http;
     giphies = [];
