@@ -23,7 +23,11 @@ userlink = 'http://127.0.0.1:8000/api/v1/user/7/?format=json';
   }
 
   ngOnInit() {
-   
+    this.http.request(this.criticlink)
+        .subscribe((res: Response) => {
+          this.critic = res.json();
+        });
+    console.log(this.critic);
   }
  
 }
