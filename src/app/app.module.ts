@@ -2,19 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 
 import { AppComponent } from './app.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './header/header.component';
+
 import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SignupComponent,
+    SigninComponent,
+    HeaderComponent,
+    
     AdvancedsearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MultiselectDropdownModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
