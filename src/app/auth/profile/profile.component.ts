@@ -29,5 +29,12 @@ userlink = 'http://127.0.0.1:8000/api/v1/user/7/?format=json';
         });
     console.log(this.critic);
   }
+  userDetails() {
+    this.http.request(this.userlink)
+      .subscribe((res: Response) => {
+        this.user = res.json();
+        console.log(this.user);
+      });
+      
  
 }
