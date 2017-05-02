@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import {RatingModule} from "ngx-rating";
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -18,7 +19,6 @@ import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.compone
     SignupComponent,
     SigninComponent,
     HeaderComponent,
-    
     AdvancedsearchComponent
   ],
   imports: [
@@ -26,7 +26,8 @@ import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.compone
     FormsModule,
     HttpModule,
     MultiselectDropdownModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
