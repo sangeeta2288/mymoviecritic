@@ -11,6 +11,8 @@ export class HomePageComponent implements OnInit {
 	http: Http;
 	nowplayingmovies = [];
 	topratedmovies = [];
+	upcomingmovies = [];
+
 	api_key = 'e0e7c64ea07685380dd4068b5334d37b';
 	commonLink = 'https://api.themoviedb.org/3/';
 	imageLink = 'https://image.tmdb.org/t/p/w500/';
@@ -23,6 +25,7 @@ export class HomePageComponent implements OnInit {
 	ngOnInit() {
 		let nowplayingApiLink = `${this.commonLink}movie/now_playing?api_key=${this.api_key}`;
 		let topratedApiLink = `${this.commonLink}movie/top_rated?api_key=${this.api_key}`;
+		let upcomingApiLink = `${this.commonLink}movie/upcoming?api_key=${this.api_key}`;
 
 		console.log(nowplayingApiLink);
 		this.http.request(nowplayingApiLink)
@@ -36,5 +39,10 @@ export class HomePageComponent implements OnInit {
 			this.topratedmovies = (res.json()).results;
 		 });
 		
+		console.log(upcomingApiLink);
+		this.http.request(upcomingApiLink)
+		 .subscribe((res: Response)=> {
+			this.upcomingmovies = (res.json()).results;
+		 });
 	}  
 }
