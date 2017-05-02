@@ -1,6 +1,9 @@
 <div class="alert alert-warning" *ngIf="blankSearch">
     <strong>At-least one field should be selected to perform search!!</strong>
 </div>
+<div class="alert alert-danger" *ngIf="emptyResults">
+    <strong>No results found for selected filter!!</strong>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
