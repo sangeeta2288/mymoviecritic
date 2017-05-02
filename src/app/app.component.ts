@@ -17,12 +17,7 @@ export class AppComponent {
     giphies = [];
     show: boolean = true;
     avg;
-    featureSelected = '';
     location: Location;
-
-  onSelect(feature: string){
-    this.featureSelected = feature;
-  }
 
   constructor(http: Http, location: Location) {
         this.http = http;
