@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 
 import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.compone
     SignupComponent,
     SigninComponent,
     HeaderComponent,
-    AdvancedsearchComponent
+    AdvancedsearchComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
