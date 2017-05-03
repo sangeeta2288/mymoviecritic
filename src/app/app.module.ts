@@ -15,6 +15,8 @@ import { HomePageComponent } from './homepage/homepage.component';
 import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.component';
 import { ContactComponent } from './contact/contact.component';
 
+import { MovieComponent } from './movie/movie.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { ContactComponent } from './contact/contact.component';
     HeaderComponent,
     AdvancedsearchComponent,
     ContactComponent,
-	HomePageComponent
+	HomePageComponent,
+  MovieComponent
+
   ],
   imports: [
     BrowserModule,
