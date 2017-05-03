@@ -5,6 +5,14 @@
   <div class="row">
     <div class="col-sm-12">
         <table style="width:50%;" class="common-border">
+          <tr style="width:100%">
+                <td class="center-text-align">
+                    <h3>Title</h3>
+                </td>
+                <td class="center-text-align">
+                    <input [(ngModel)]="Title" type="text" class="form-control"/>
+                </td>
+            </tr>
           <tr style="width:50%">
             <td style="width:50%" class="center-text-align">
                 <h3>Genres</h3>
@@ -15,6 +23,11 @@
                 </ss-multiselect-dropdown>
             </td>
           </tr>
+          <tr style="width:100%">
+                <td class="center-text-align">
+                    <h3>Rating</h3>
+                </td>
+            </tr>
            <!-- blank row as separator-->
           <tr style="height:20px"><td></td><td></td></tr>
           <tr style="width:100%">
