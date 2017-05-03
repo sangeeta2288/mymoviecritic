@@ -30,7 +30,7 @@ export class HomePageComponent implements OnInit {
 		console.log(nowplayingApiLink);
 		this.http.request(nowplayingApiLink)
 		 .subscribe((res: Response)=> {
-			this.nowplayingApiLink = (res.json()).results;
+			this.nowplayingmovies = (res.json()).results;
 		 });
 		
 		console.log(topratedApiLink);

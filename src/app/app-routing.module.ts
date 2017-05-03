@@ -12,7 +12,6 @@ const appRoutes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'advancedsearch', component: AdvancedsearchComponent },
   { path: 'movie', component: MovieComponent },
-  { path: 'advancedsearch', component: AdvancedsearchComponent },
   { path: 'home', component: HomePageComponent },
   { path: '',
     redirectTo: '/movie',
