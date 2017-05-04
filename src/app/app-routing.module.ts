@@ -5,6 +5,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.component';
 import { MovieComponent } from './movie/movie.component';
 import { HomePageComponent } from './homepage/homepage.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 const appRoutes: Routes = [
@@ -16,7 +17,8 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/movie',
     pathMatch: 'full'
-  }
+  },
+   { path: 'contact', component: ContactComponent }
 ];
 
 @NgModule({
