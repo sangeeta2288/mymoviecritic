@@ -1,6 +1,9 @@
 <div class="alert alert-warning" *ngIf="blankSearch">
     <strong>At-least one field should be selected to perform search!!</strong>
 </div>
+<div class="alert alert-danger" *ngIf="emptyResults">
+    <strong>No results found for selected filter!!</strong>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -27,7 +30,34 @@
                 <td class="center-text-align">
                     <h3>Rating</h3>
                 </td>
+                <td>
+                    <rating [(ngModel)]="starsCount" [max]="10"></rating>
+                </td>
             </tr>
+          <tr style="width:100%">
+                <td class="center-text-align">
+                    <h3>Year</h3>
+                </td>
+                <td class="center-text-align">
+                    <input [(ngModel)]="Year" type="text" class="form-control"/>
+                </td>
+          </tr>
+          <tr style="width:100%">
+                <td class="center-text-align">
+                    <h3>Cast</h3>
+                </td>
+                <td class="center-text-align">
+                    <input [(ngModel)]="Cast" type="text" class="form-control"/>
+                </td>
+            </tr>
+          <tr style="width:100%">
+                <td class="center-text-align">
+                    <h3>No of votes</h3>
+                </td>
+                <td class="center-text-align">
+                    <input [(ngModel)]="Votes" type="text" class="form-control"/>
+                </td>
+          </tr>
            <!-- blank row as separator-->
           <tr style="height:20px"><td></td><td></td></tr>
           <tr style="width:100%">
