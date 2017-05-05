@@ -6,6 +6,7 @@ import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.compone
 import { MovieComponent } from './movie/movie.component';
 import { HomePageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './auth/profile/profile.component';
+;
 
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },

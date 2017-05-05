@@ -16,6 +16,7 @@ import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.compone
 import { ContactComponent } from './contact/contact.component';
 
 import { MovieComponent } from './movie/movie.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MovieComponent } from './movie/movie.component';
     AdvancedsearchComponent,
     ContactComponent,
 	HomePageComponent,
-  MovieComponent
+  MovieComponent,
+  ProfileComponent
 
   ],
   imports: [
