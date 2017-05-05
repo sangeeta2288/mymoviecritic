@@ -3,14 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import {RatingModule} from "ngx-rating";
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { HomePageComponent } from './homepage/homepage.component';
 
 import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.component';
+import { ContactComponent } from './contact/contact.component';
+
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +23,19 @@ import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.compone
     SignupComponent,
     SigninComponent,
     HeaderComponent,
-    
-    AdvancedsearchComponent
+    AdvancedsearchComponent,
+    ContactComponent,
+	HomePageComponent,
+  MovieComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MultiselectDropdownModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

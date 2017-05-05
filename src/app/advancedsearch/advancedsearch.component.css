@@ -10,3 +10,6 @@
 #multiselect .dropdown-menu{
     transform: translate(100%, 0) !important;
 }
+.star-icon{
+  font-size: 1.5em !important;
+}

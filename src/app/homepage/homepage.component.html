@@ -1,0 +1,41 @@
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
+
+<hr/>
+<h2>Now Playing<h2><hr/>
+<div class="container">
+  <div class="row">
+		<div class="row itemsBlock">
+			<div *ngFor="let item of nowplayingmovies; let i=index" class="col-md-2 col-sm-6 col-12">
+				<img class="img-responsive" src="{{imageLink}}{{item.poster_path}}" alt="Movie Poster" style="width:240px;height:240px;">
+				<br>
+			</div>
+		</div>
+  </div>
+</div>
+<hr/>
+
+<h2>Top Rated<h2><hr/>
+<div class="container">
+  <div class="row">
+		<div class="row itemsBlock">
+			<div *ngFor="let item of topratedmovies; let i=index" class="col-md-2 col-sm-6 col-12">
+				<img class="img-responsive" src="{{imageLink}}{{item.poster_path}}" alt="Movie Poster" style="width:240px;height:240px;">
+				<br>
+			</div>
+		</div>
+  </div>
+</div>
+<hr/>
+
+<h2>Up Coming<h2><hr/>
+<div class="container">
+  <div class="row">
+		<div class="row itemsBlock">
+			<div *ngFor="let item of upcomingmovies; let i=index" class="col-md-2 col-sm-6 col-12">
+				<img class="img-responsive" src="{{imageLink}}{{item.poster_path}}" alt="Movie Poster" style="width:240px;height:240px;">
+				
+			</div>
+		</div>
+  </div>
+</div>
