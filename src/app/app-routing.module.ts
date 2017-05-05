@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/movie',
     pathMatch: 'full'
-  }
+  },
   { path: 'profile', component: ProfileComponent },
 ];
 
