@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="form-bottom">
-              <form role="form" action="" method="post" class="registration-form">
+              <!--<form role="form" action="" method="post" class="registration-form">-->
                 <div class="form-group">
 
                   <label>First Name :  {{ user.first_name }}</label>
@@ -57,16 +57,13 @@
                 <div class="form-group">
                   <label style="vertical-align: top">Critics : </label>
 
+                  <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel">
 
-                  <!--<ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel"-->
-                                           <!--style="width:50%; transform: translate(100%, 0)">-->
-                  <!--</ss-multiselect-dropdown>-->
-
-
+                  </ss-multiselect-dropdown>
                 </div>
 
                 <button type="submit" class="btn">Update</button>
-              </form>
+              <!--</form>-->
             </div>
           </div>
 
