@@ -44,5 +44,5 @@ userlink = 'http://127.0.0.1:8000/api/v1/user/7/?format=json';
     this.http.request(this.criticlink)
       .subscribe((res: Response) => {
         this.critic = res.json();
-    })
-};
+    })};
+}
