@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
     // });
     (
       data => {
-        this.router.navigate(['Home']);
+        this.router.navigate(['home']);
       },
       );
   }
