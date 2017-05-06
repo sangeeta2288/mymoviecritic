@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="form-bottom">
-              <form role="form" action="" method="post" class="registration-form" (ngSubmit)="onSignup()" #f="ngForm">
+              <form (ngSubmit)="onSignup(f)" #f="ngForm">
                 <div class="form-group">
                   <label class="sr-only" for="form-first-name">Username</label>
                   <input type="text" name="username" placeholder="Username..." class="form-first-name form-control" id="form-User-name" ngModel>

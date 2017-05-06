@@ -143,6 +143,17 @@ class UserCriticResource(ModelResource):
     class Meta:
         queryset = UserCritic.objects.all()
         resource_name = 'usercritic'
+        allowed_methods = ['post' , 'get']
+        object_class = User, Critic
+        authentication = Authentication()
+        authorization = Authorization()
+    def obj_create(self, bundle, request=None, **kwargs):
+                try:
+                    bundle = super(UserCriticResource, self).obj_create(bundle, usercritic=bundle.request)
+                    bundle.obj.save()
+                except IntegrityError:
+                    raise BadRequest('Error')
+                return bundle
 
 v1_api = Api(api_name='v1')
 v1_api.register(CriticResource())
