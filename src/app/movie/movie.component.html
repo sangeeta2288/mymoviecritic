@@ -9,7 +9,7 @@
             </span>
          </div>
          <br>
-         <h3 *ngIf="!show">
+         <h3  *ngIf="show">
             {{giphies.Title}}
          </h3>
          <div class="row">
@@ -26,7 +26,10 @@
                      {{giphies.Plot}}
                   </h4>
                   <br>
-                  <h3 >  MyMovieCritic:{{avg}}/10 <span>Rotten Tomatoes:{{giphies.Ratings[1].Value}} </span></h3>
+                  <h3 > <span *ngIf="view; else eBlock">MyMovieCritic:{{avg}}/10</span>
+                  <ng-template #eBlock> MyMovieCritic:{{customavg}}/10 </ng-template>
+                  
+                  <span>Rotten Tomatoes:{{giphies.Ratings[1]?.Value}} </span></h3>
                   <br>
                   <h3 >MetaCritic: {{giphies.Ratings[2].Value}}  Imdb Rating: {{giphies.Ratings[0].Value}}</h3>
                   <br>
