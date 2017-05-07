@@ -13,7 +13,6 @@ import { AuthenticationService } from './authentication.service';
 })
 export class SigninComponent implements OnInit {
 
-  
 
   constructor(private _http: Http,
               private route: ActivatedRoute,
@@ -28,5 +27,30 @@ export class SigninComponent implements OnInit {
     const username = form.value.username;
     const password = form.value.password;
         this.authenticationService.login(username,password)
+            .subscribe(
+                data => {
+                    this.router.navigate(['home']);
+                },
+                error => {
+                   console.log(error);
+                });}
+    // let params = JSON.stringify({username: username , password: password });
+    // console.log(params);
+    // let headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    // this._http.post('http://127.0.0.1:8000/api/v1/user/login/', params , {
+    //   headers: headers
+    // }).subscribe(
+    // ((data) => {
+    //   console.log(data);
+    //   console.log(this.router);
+    //   this.router.navigate(['home']);
+    // }),
+    // data => {
+    //     // this.router.navigate(['home' , data.id]);
+    //   },
+    // );
+
+  
 
 }
