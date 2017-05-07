@@ -9,7 +9,7 @@
             </span>
          </div>
          <br>
-         <h3 *ngIf="!show">
+         <h3  *ngIf="show">
             {{giphies.Title}}
          </h3>
          <div class="row">
@@ -26,10 +26,16 @@
                      {{giphies.Plot}}
                   </h4>
                   <br>
-                  <h3 >  MyMovieCritic:{{avg}}/10 <span>Rotten Tomatoes:{{giphies.Ratings[1].Value}} </span></h3>
+                  <h3 > <span *ngIf="view; else eBlock">MyMovieCritic:{{avg}}/10</span>
+                  <ng-template #eBlock> MyMovieCritic:{{customavg}}/10 </ng-template>
+                  
+                  <span>Rotten Tomatoes:{{giphies.Ratings[1]?.Value}} </span></h3>
                   <br>
-                  <h3 >MetaCritic: {{giphies.Ratings[2].Value}}  Imdb Rating: {{giphies.Ratings[0].Value}}</h3>
+                  <h3 >MetaCritic: {{giphies.Ratings[2]?.Value}}  Imdb Rating: {{giphies.Ratings[0]?.Value}}</h3>
                   <br>
+                  <div><button (click)="view = true" type="button" class="btn btn-primary">AllCritics</button>
+                  <button (click)="view = false" type="button" class="btn btn-primary">MyCritics</button>
+                  </div>
                </ng-template>
             </div>
             <div>
@@ -38,10 +44,20 @@
       </div>
       <!-- /.row -->
       <!-- Projects Row -->
-      <div *ngIf="view; else elseView"></div>
-      <ng-template #elseView>
+      <div *ngIf="view; else elseView">
          <div class="row">
             <div *ngFor="let item of reviews.objects" class="col-md-4 portfolio-item">
+               <h3>
+                  <a href="#">{{item.critic?.name}}</a> Rating : {{item.Rating}}
+               </h3>
+               <p>{{item.review}}.</p>
+            </div>
+         </div>
+
+      </div>
+      <ng-template #elseView>
+         <div class="row">
+            <div *ngFor="let item of userreviews" class="col-md-4 portfolio-item">
                <h3>
                   <a href="#">{{item.critic?.name}}</a> Rating : {{item.Rating}}
                </h3>

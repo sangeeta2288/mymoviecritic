@@ -53,6 +53,8 @@ class UserLoginResource(ModelResource):
         fields = ['first_name', 'last_name', 'email']
         allowed_methods = ['get', 'post']
         resource_name = 'user'
+        includes = ('id')
+
 
     def override_urls(self):
         return [
@@ -77,7 +79,8 @@ class UserLoginResource(ModelResource):
             if user.is_active:
                 login(request, user)
                 return self.create_response(request, {
-                    'success': True
+                    'success': True,
+                    'id' : user.id
                 })
             else:
                 return self.create_response(request, {
@@ -131,9 +134,9 @@ class ReviewResource(ModelResource):
 
         if tid is not None:
             return qs.filter(
-                MovieID = tid) 
+                MovieID = tid)
                 # release_date__lte=datetime.date(tid,12,31))
-        return qs   
+        return qs
 
 
 class UserCriticResource(ModelResource):
