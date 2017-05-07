@@ -45,8 +45,27 @@ export class AdvancedsearchComponent implements OnInit {
       this.blankSearch = true;
       return;
     }
+    this.blankSearch = false;
+
+    let doTitleSearch = false;
+
+    if(this.Title && this.Title != "")
+      doTitleSearch = true;
+
+    let doGenreSearch = false;
+    if(!doTitleSearch)
+      doGenreSearch = true;
+
     this.results = [];
     this.blankSearch = false;
+    console.log(this.Genre);//id list = [28,16]
+
+    //Get top 3 cast names if entered by user
+    let castList = [];
+    if(this.Cast != ''){
+      //list of cast ids
+      //castList = this.GetCastListByKeyword();
+    }
 
     //form of url = 'https://api.themoviedb.org/3/genre/28,12/movies?api_key=e0e7c64ea07685380dd4068b5334d37b';
     let extLink = `${this.commonLink}genre/${this.Genre}/movies?api_key=${this.api_key}`;
@@ -66,14 +85,17 @@ export class AdvancedsearchComponent implements OnInit {
   //Get results for Title based search
   GetTitleSearchResults():any[]{
     //Search by title
+    return([])
   }
 
   //Get results for Genre based search
   GetGenreSearchResults():any[]{
+    return([])
   }
 
   //Here we get list of casts by taking cast field's value
   GetCastListByKeyword():any[]{
+    return([])
   }
 
   GetSelectedGenres(): any[] {
