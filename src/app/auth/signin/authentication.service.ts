@@ -6,6 +6,12 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class AuthenticationService {
     
+    constructor(private http: Http) { }
+
+    login(username: string, password: string) {
+     
+    let params = JSON.stringify({username: username , password: password });
+    console.log(params);
 }
 
    // return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
