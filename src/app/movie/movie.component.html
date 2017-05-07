@@ -44,10 +44,20 @@
       </div>
       <!-- /.row -->
       <!-- Projects Row -->
-      <div *ngIf="view; else elseView"></div>
-      <ng-template #elseView>
+      <div *ngIf="view; else elseView">
          <div class="row">
             <div *ngFor="let item of reviews.objects" class="col-md-4 portfolio-item">
+               <h3>
+                  <a href="#">{{item.critic?.name}}</a> Rating : {{item.Rating}}
+               </h3>
+               <p>{{item.review}}.</p>
+            </div>
+         </div>
+
+      </div>
+      <ng-template #elseView>
+         <div class="row">
+            <div *ngFor="let item of userreviews" class="col-md-4 portfolio-item">
                <h3>
                   <a href="#">{{item.critic?.name}}</a> Rating : {{item.Rating}}
                </h3>
