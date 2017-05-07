@@ -76,6 +76,10 @@ export class AdvancedsearchComponent implements OnInit {
       this.http.request(extLink)
         .subscribe((res: Response)=> {
           keywordList = (res.json()).results;
+          if(keywordList && keywordList.length)
+            this.GetMovieByKeywordList(keywordList);
+          else
+            this.emptyResults = true;
         });
     }
 
