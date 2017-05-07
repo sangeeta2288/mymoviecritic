@@ -12,6 +12,11 @@ export class AuthenticationService {
      
     let params = JSON.stringify({username: username , password: password });
     console.log(params);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+     return this.http.post('http://127.0.0.1:8000/api/v1/user/login/', params , {
+      headers: headers
+    })
 }
 
    // return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
