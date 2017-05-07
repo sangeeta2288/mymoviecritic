@@ -67,6 +67,18 @@ export class AdvancedsearchComponent implements OnInit {
       //castList = this.GetCastListByKeyword();
     }
 
+    if(doTitleSearch){
+      let extLink = `${this.commonLink}search/keyword?api_key=${this.api_key}`;
+      let query = `&query=${this.Title}&page=1`;
+      extLink = `${extLink}${query}`;
+
+      let keywordList = [];
+      this.http.request(extLink)
+        .subscribe((res: Response)=> {
+          keywordList = (res.json()).results;
+        });
+    }
+
     //form of url = 'https://api.themoviedb.org/3/genre/28,12/movies?api_key=e0e7c64ea07685380dd4068b5334d37b';
     let extLink = `${this.commonLink}genre/${this.Genre}/movies?api_key=${this.api_key}`;
 
