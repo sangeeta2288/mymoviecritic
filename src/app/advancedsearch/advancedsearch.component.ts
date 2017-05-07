@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
+import {RatingModule} from "ngx-rating";
 
 @Component({
   selector: 'app-advancedsearch',
@@ -9,6 +10,10 @@ import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 })
 export class AdvancedsearchComponent implements OnInit {
   Genre: number[];
+  Title = "";
+  Year = "";
+  Cast = "";
+  Votes = "";
   myGenres: IMultiSelectOption[];
   http: Http;
   selectedGenres = [];
@@ -17,6 +22,7 @@ export class AdvancedsearchComponent implements OnInit {
   commonLink = 'https://api.themoviedb.org/3/';
   imageLink = 'https://image.tmdb.org/t/p/w500/';
   blankSearch = false;
+  emptyResults = false;
 
   constructor(http: Http) {
     this.http = http;
@@ -35,7 +41,7 @@ export class AdvancedsearchComponent implements OnInit {
   //called on submit (click)
   Submit() {
   //If blank search warn user.
-  if(!this.Genre || !this.Genre.length){
+  if((!this.Genre || !this.Genre.length) && (!this.Title || this.Title == "")){
     this.blankSearch = true;
     return;
   }
