@@ -82,6 +82,13 @@ export class AdvancedsearchComponent implements OnInit {
     this.results = [];
   }
 
+  GetMovieByKeywordList(keywords: any[]):any[]{
+    let extLink = `${this.commonLink}discover/movie?api_key=${this.api_key}`;
+    let query = `&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
+
+    return([]);
+  }
+
   //Get results for Title based search
   GetTitleSearchResults():any[]{
     //Search by title
