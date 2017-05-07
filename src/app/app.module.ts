@@ -18,6 +18,9 @@ import { ContactComponent } from './contact/contact.component';
 import { MovieComponent } from './movie/movie.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 
+import { AuthenticationService } from './auth/signin/authentication.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
     AppRoutingModule,
     RatingModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
