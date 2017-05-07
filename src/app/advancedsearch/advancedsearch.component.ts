@@ -23,6 +23,7 @@ export class AdvancedsearchComponent implements OnInit {
   imageLink = 'https://image.tmdb.org/t/p/w500/';
   blankSearch = false;
   emptyResults = false;
+  starsCount = 0;
 
   constructor(http: Http) {
     this.http = http;
@@ -94,8 +95,13 @@ export class AdvancedsearchComponent implements OnInit {
 
   //called on Reset (click)
   Reset(){
+    this.blankSearch = false;
     this.Genre = [];
     this.results = [];
+    this.starsCount = 0;
+    this.Year = "";
+    this.Cast = "";
+    this.Votes = "";
   }
 
   GetMovieByKeywordList(keywords: any[]):any[]{
