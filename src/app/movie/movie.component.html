@@ -31,8 +31,11 @@
                   
                   <span>Rotten Tomatoes:{{giphies.Ratings[1]?.Value}} </span></h3>
                   <br>
-                  <h3 >MetaCritic: {{giphies.Ratings[2].Value}}  Imdb Rating: {{giphies.Ratings[0].Value}}</h3>
+                  <h3 >MetaCritic: {{giphies.Ratings[2]?.Value}}  Imdb Rating: {{giphies.Ratings[0]?.Value}}</h3>
                   <br>
+                  <div><button (click)="view = true" type="button" class="btn btn-primary">AllCritics</button>
+                  <button (click)="view = false" type="button" class="btn btn-primary">MyCritics</button>
+                  </div>
                </ng-template>
             </div>
             <div>
