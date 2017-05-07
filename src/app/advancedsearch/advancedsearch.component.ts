@@ -63,6 +63,19 @@ export class AdvancedsearchComponent implements OnInit {
     this.results = [];
   }
 
+  //Get results for Title based search
+  GetTitleSearchResults():any[]{
+    //Search by title
+  }
+
+  //Get results for Genre based search
+  GetGenreSearchResults():any[]{
+  }
+
+  //Here we get list of casts by taking cast field's value
+  GetCastListByKeyword():any[]{
+  }
+
   GetSelectedGenres(): any[] {
     if(!this.Genre || !this.Genre.length)
       return([]);
