@@ -18,16 +18,20 @@ userlink = 'http://127.0.0.1:8000/api/v1/user/7/?format=json';
   myOptions: IMultiSelectOption[];
   constructor(http: Http) {
     this.http = http;
-    // this.critics();
+    this.critics();
     this.userDetails();
   }
 
   ngOnInit() {
-    this.http.request(this.criticlink)
-        .subscribe((res: Response) => {
-          this.critic = res.json();
-        });
-    console.log(this.critic);
+    
+	this.myOptions = [
+     
+      { id: 1, name: 'Roger Ebert' },
+      { id: 2, name: 'Gene Siskel' },
+      { id: 3, name: 'Andrew Sarris' },
+      { id: 4, name: 'J. Hoberman' },
+      
+    ];
   }
   userDetails() {
     this.http.request(this.userlink)
@@ -36,5 +40,9 @@ userlink = 'http://127.0.0.1:8000/api/v1/user/7/?format=json';
         console.log(this.user);
       })};
       
- 
-};
+  critics() {
+    this.http.request(this.criticlink)
+      .subscribe((res: Response) => {
+        this.critic = res.json();
+    })};
+}
