@@ -54,8 +54,7 @@ export class MovieComponent implements OnInit {
       makehttp(giphies:any): any {
       this.mylink = this.mylink + this.giphies["imdbID"]; 
       this.http.request(this.mylink)
-                      .subscribe((res: Response) => {
-                       this.view = false; 
+                      .subscribe((res: Response) => {                       
                       this.reviews = res.json();
                       console.log(this.reviews);
                       this.calculateavg(this.reviews);
@@ -93,5 +92,6 @@ export class MovieComponent implements OnInit {
       let customsum = customvalues.reduce((previous, current) => current += previous);
       this.customavg = Math.round((customsum / customvalues.length)*10)/10;
       console.log(this.customavg)
+      this.view = false;
     }
 }
