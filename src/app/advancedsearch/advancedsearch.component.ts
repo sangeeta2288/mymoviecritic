@@ -122,6 +122,9 @@ export class AdvancedsearchComponent implements OnInit {
     if((!this.Genre || !this.Genre.length) && (!this.Title || this.Title == "")){
       return('At-least one of Genre or Title value should be present to perform search!!');
     }
+    if(this.Year != '' && !(/^\d{4}$/.test(this.Year))){
+      return('Invalid value in Year field, should contain number!!');
+    }
   }
 
   GetMovieByKeywordList(keywords: any[]):any[]{
