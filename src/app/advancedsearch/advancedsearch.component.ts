@@ -10,19 +10,32 @@ import {RatingModule} from "ngx-rating";
 })
 export class AdvancedsearchComponent implements OnInit {
   Genre: number[];
+  blankSearch = false;
   Title = "";
   Year = "";
   Cast = "";
   Votes = "";
+  inValidInputMessage = "";
   myGenres: IMultiSelectOption[];
   http: Http;
   selectedGenres = [];
   results = [];
+  link = 'https://www.omdbapi.com/?t=';
+  mylink = 'http://127.0.0.1:8000/api/v1/review/?format=json&tid=';
+  myuserlink = "http://127.0.0.1:8000/api/v1/usercritic";
+  movieTitleToRottenRatingMap = {};
+  giphies = [];
+  reviews = [];
+  userreviews;
+  critics;
+  avg;
+  customavg;
+
   api_key = 'e0e7c64ea07685380dd4068b5334d37b';
   commonLink = 'https://api.themoviedb.org/3/';
   imageLink = 'https://image.tmdb.org/t/p/w500/';
-  blankSearch = false;
   emptyResults = false;
+  starsCount = 0;
 
   constructor(http: Http) {
     this.http = http;
@@ -38,14 +51,16 @@ export class AdvancedsearchComponent implements OnInit {
          });
   }
 
-  //called on submit (click)
+    //called on submit (click)
   Submit() {
-    //If blank search warn user.
-    if((!this.Genre || !this.Genre.length) && (!this.Title || this.Title == "")){
-      this.blankSearch = true;
+    this.emptyResults = false;
+    this.inValidInputMessage = '';
+    this.results = [];
+    let inValidInputs = this.ValidateInputs();
+    if(inValidInputs && inValidInputs != ''){
+      this.inValidInputMessage = inValidInputs;
       return;
     }
-    this.blankSearch = false;
 
     let doTitleSearch = false;
 
@@ -96,6 +111,25 @@ export class AdvancedsearchComponent implements OnInit {
   Reset(){
     this.Genre = [];
     this.results = [];
+    this.starsCount = 0;
+    this.Year = "";
+    this.Cast = "";
+    this.Votes = "";
+    this.inValidInputMessage = '';
+    this.emptyResults = false;
+  }
+
+  ValidateInputs():string{
+    //If blank search warn user.
+    if((!this.Genre || !this.Genre.length) && (!this.Title || this.Title == "")){
+      return('At-least one of Genre or Title value should be present to perform search!!');
+    }
+    if(this.Year != '' && !(/^\d{4}$/.test(this.Year))){
+      return('Invalid value in Year field, should contain number!!');
+    }
+    if(this.Votes != '' && !(/^\d{4}$/.test(this.Votes))){
+      return('Invalid value in Votes field, should contain number!!');
+    }
   }
 
   GetMovieByKeywordList(keywords: any[]):any[]{
