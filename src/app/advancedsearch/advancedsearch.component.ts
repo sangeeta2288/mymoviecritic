@@ -53,12 +53,14 @@ export class AdvancedsearchComponent implements OnInit {
 
     //called on submit (click)
   Submit() {
-    //If blank search warn user.
-    if((!this.Genre || !this.Genre.length) && (!this.Title || this.Title == "")){
-      this.blankSearch = true;
+    this.emptyResults = false;
+    this.inValidInputMessage = '';
+    this.results = [];
+    let inValidInputs = this.ValidateInputs();
+    if(inValidInputs && inValidInputs != ''){
+      this.inValidInputMessage = inValidInputs;
       return;
     }
-    this.blankSearch = false;
 
     let doTitleSearch = false;
 
