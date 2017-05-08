@@ -127,6 +127,9 @@ export class AdvancedsearchComponent implements OnInit {
     if(this.Year != '' && !(/^\d{4}$/.test(this.Year))){
       return('Invalid value in Year field, should contain number!!');
     }
+    if(this.Votes != '' && !(/^\d{4}$/.test(this.Votes))){
+      return('Invalid value in Votes field, should contain number!!');
+    }
   }
 
   GetMovieByKeywordList(keywords: any[]):any[]{
