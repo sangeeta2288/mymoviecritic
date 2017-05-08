@@ -6,7 +6,7 @@ import { AdvancedsearchComponent } from './advancedsearch/advancedsearch.compone
 import { MovieComponent } from './movie/movie.component';
 import { HomePageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './auth/profile/profile.component';
-;
+import { ContactComponent } from './contact/contact.component';
 
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -19,6 +19,7 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   { path: 'profile', component: ProfileComponent },
+  { path: 'contact', component: ContactComponent },
 ];
 
 @NgModule({
@@ -28,4 +29,3 @@ const appRoutes: Routes = [
 export class AppRoutingModule {
 
 }
-
