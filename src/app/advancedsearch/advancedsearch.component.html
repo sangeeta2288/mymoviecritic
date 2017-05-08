@@ -1,8 +1,8 @@
-<div class="alert alert-warning" *ngIf="blankSearch">
-    <strong>At-least one of Genre or Title value should be present to perform search!!</strong>
-</div>
 <div class="alert alert-danger" *ngIf="emptyResults">
     <strong>No results found for selected filter!!</strong>
+</div>
+<div class="alert alert-danger" *ngIf="inValidInputMessage && inValidInputMessage != ''">
+    <strong>{{inValidInputMessage}}</strong>
 </div>
 <div class="container">
   <div class="row">
@@ -62,7 +62,7 @@
           <tr style="height:20px"><td></td><td></td></tr>
           <tr style="width:100%">
                 <td class="center-text-align">
-                    <button class="btn btn-success" type="submit" (click)="Submit()">Submit</button>
+                    <button id="submitButton" class="btn btn-success" type="submit" (click)="Submit()">Submit</button>
                 </td>
                 <td class="center-text-align">
                     <button class="btn btn-default" type="button" (click)="Reset()">
@@ -91,11 +91,17 @@
                      {{item.overview}}
                   </h4>
                   <br>
-                  <h3 >  MyMovieCritic: {{item.vote_average}} <!--<span>Rotten Tamatoes:{{giphies.Ratings[1].Value}} </span>
+                  <h3 >  MyMovieCritic: {{item.vote_average}}
+                    <span *ngIf="movieTitleToRottenRatingMap[item.title] && movieTitleToRottenRatingMap[item.title] > 0">
+                      Rotten Tamatoes:{{movieTitleToRottenRatingMap[item.title]}}
+                    </span>
                   </h3>
+                  <!--<br>
+                  <h3 >MetaCritic: {{giphies.Ratings[2].Value}}  Imdb Rating: {{giphies.Ratings[0].Value}}</h3>-->
                   <br>
-                  <h3 >MetaCritic: {{giphies.Ratings[2].Value}}  Imdb Rating: {{giphies.Ratings[0].Value}}--></h3>
-                  <br>
+                 <h4>Release Date: {{item.release_date}}</h4>
+                 <br>
+                 <h4>No. of votes: {{item.vote_count}}</h4>
                </ng-template>
             </div>
          </div>
