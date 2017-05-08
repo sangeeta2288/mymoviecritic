@@ -117,6 +117,13 @@ export class AdvancedsearchComponent implements OnInit {
     this.emptyResults = false;
   }
 
+  ValidateInputs():string{
+    //If blank search warn user.
+    if((!this.Genre || !this.Genre.length) && (!this.Title || this.Title == "")){
+      return('At-least one of Genre or Title value should be present to perform search!!');
+    }
+  }
+
   GetMovieByKeywordList(keywords: any[]):any[]{
     let extLink = `${this.commonLink}discover/movie?api_key=${this.api_key}`;
     let query = `&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
