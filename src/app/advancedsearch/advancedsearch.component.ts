@@ -109,6 +109,12 @@ export class AdvancedsearchComponent implements OnInit {
   Reset(){
     this.Genre = [];
     this.results = [];
+    this.starsCount = 0;
+    this.Year = "";
+    this.Cast = "";
+    this.Votes = "";
+    this.inValidInputMessage = '';
+    this.emptyResults = false;
   }
 
   GetMovieByKeywordList(keywords: any[]):any[]{
