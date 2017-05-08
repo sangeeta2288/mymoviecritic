@@ -10,18 +10,30 @@ import {RatingModule} from "ngx-rating";
 })
 export class AdvancedsearchComponent implements OnInit {
   Genre: number[];
+  blankSearch = false;
   Title = "";
   Year = "";
   Cast = "";
   Votes = "";
+  inValidInputMessage = "";
   myGenres: IMultiSelectOption[];
   http: Http;
   selectedGenres = [];
   results = [];
+  link = 'https://www.omdbapi.com/?t=';
+  mylink = 'http://127.0.0.1:8000/api/v1/review/?format=json&tid=';
+  myuserlink = "http://127.0.0.1:8000/api/v1/usercritic";
+  movieTitleToRottenRatingMap = {};
+  giphies = [];
+  reviews = [];
+  userreviews;
+  critics;
+  avg;
+  customavg;
+
   api_key = 'e0e7c64ea07685380dd4068b5334d37b';
   commonLink = 'https://api.themoviedb.org/3/';
   imageLink = 'https://image.tmdb.org/t/p/w500/';
-  blankSearch = false;
   emptyResults = false;
   starsCount = 0;
 
@@ -39,7 +51,7 @@ export class AdvancedsearchComponent implements OnInit {
          });
   }
 
-  //called on submit (click)
+    //called on submit (click)
   Submit() {
     //If blank search warn user.
     if((!this.Genre || !this.Genre.length) && (!this.Title || this.Title == "")){
@@ -95,13 +107,8 @@ export class AdvancedsearchComponent implements OnInit {
 
   //called on Reset (click)
   Reset(){
-    this.blankSearch = false;
     this.Genre = [];
     this.results = [];
-    this.starsCount = 0;
-    this.Year = "";
-    this.Cast = "";
-    this.Votes = "";
   }
 
   GetMovieByKeywordList(keywords: any[]):any[]{
