@@ -185,6 +185,16 @@ export class AdvancedsearchComponent implements OnInit {
     });
   }
 
+  ApplyYearFilter(resultsToBeFiltered: any[]):any[]{
+    let FilteredResults = [];
+    //Apply Filter
+    if(this.Year && this.Year != ""){
+    } else {
+      return(resultsToBeFiltered);
+    }
+    return(FilteredResults);
+  }
+
   //Get results for Title based search
   GetTitleSearchResults():any[]{
     //Search by title
