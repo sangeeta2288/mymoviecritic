@@ -37,4 +37,10 @@ describe('AdvancedsearchComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('ss-multiselect-dropdown'));
   }));
+
+  it('should create ratings', async(() => {
+// const fixture = TestBed.createComponent(AdvancedsearchComponent);
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('rating'));
+  }));
 });
