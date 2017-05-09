@@ -189,6 +189,12 @@ export class AdvancedsearchComponent implements OnInit {
     let FilteredResults = [];
     //Apply Filter
     if(this.Year && this.Year != ""){
+      resultsToBeFiltered.forEach((result) => {
+        let release_date = result.release_date.slice(0,4);
+        if(release_date === this.Year){
+          FilteredResults.push(result);
+        }
+      });
     } else {
       return(resultsToBeFiltered);
     }
