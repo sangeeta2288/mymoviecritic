@@ -169,6 +169,12 @@ export class AdvancedsearchComponent implements OnInit {
     this.results = filteredResults;
   }
 
+  ApplyRottenRatings(resultsToBeFiltered: any[]){
+    resultsToBeFiltered.forEach((result) => {
+      var apiLink = this.link + result.title;
+    });
+  }
+
   //Get results for Title based search
   GetTitleSearchResults():any[]{
     //Search by title
