@@ -148,6 +148,14 @@ export class AdvancedsearchComponent implements OnInit {
     return([]);
   }
 
+  ApplyOtherFilters(resultsToBeFiltered: any[], GenreApplied:boolean):void{
+    //Apply Genre Filter
+    let filteredResults = resultsToBeFiltered;
+    if(!GenreApplied){
+      filteredResults = this.ApplyGenreFilter(filteredResults);
+    }
+  }
+
   //Get results for Title based search
   GetTitleSearchResults():any[]{
     //Search by title
