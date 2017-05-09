@@ -45,6 +45,12 @@ describe('moviecritic App', () => {
     expect(h3_elements.getText()).toContain('Keyword/Title');
   });
 
+  it('should test advanced search page for field Genres', () => {
+    browser.get(`${commonUrl}/advancedsearch`);
+    var GenreElement = element(by.id("GenreList"));
+    expect(GenreElement.getText()).toContain('Genres');
+  });
+
 
 });
 
