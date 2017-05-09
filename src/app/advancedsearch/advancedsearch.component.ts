@@ -172,6 +172,12 @@ export class AdvancedsearchComponent implements OnInit {
   ApplyRottenRatings(resultsToBeFiltered: any[]){
     resultsToBeFiltered.forEach((result) => {
       var apiLink = this.link + result.title;
+      this.http.request(apiLink)
+        .subscribe((res: Response) => {
+          let rating = res.json();
+          rating = rating.Ratings;
+          this.movieTitleToRottenRatingMap[result.title] = rating;
+        });
     });
   }
 
