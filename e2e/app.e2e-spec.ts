@@ -63,5 +63,12 @@ describe('moviecritic App', () => {
     expect(YearElement.getText()).toContain('Year');
   });
 
+  it('should test advanced search page for field Votes', () => {
+    browser.get(`${commonUrl}/advancedsearch`);
+    var VotesElement = element(by.id("VotesID"));
+    expect(VotesElement.getText()).toContain('No. of votes (Minimum)');
+  });
+
+
 });
 
