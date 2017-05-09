@@ -154,6 +154,10 @@ export class AdvancedsearchComponent implements OnInit {
     if(!GenreApplied){
       filteredResults = this.ApplyGenreFilter(filteredResults);
     }
+    //Apply Year Filter
+    filteredResults = this.ApplyYearFilter(filteredResults);
+    //Apply Votes filter
+    filteredResults = this.ApplyVotesFilter(filteredResults);
   }
 
   //Get results for Title based search
