@@ -70,5 +70,11 @@ describe('moviecritic App', () => {
   });
 
 
+  it('should test home page for Now Playing ', () => {
+    browser.get(`${commonUrl}/home`);
+    var h2_elements = element(by.tagName("h2"));
+    expect(h2_elements.getText()).toContain('Now Playing');
+  });
+
 });
 
