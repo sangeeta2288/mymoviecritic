@@ -148,6 +148,67 @@ export class AdvancedsearchComponent implements OnInit {
     return([]);
   }
 
+  ApplyOtherFilters(resultsToBeFiltered: any[], GenreApplied:boolean):void{
+    //Apply Genre Filter
+    let filteredResults = resultsToBeFiltered;
+    if(!GenreApplied){
+      filteredResults = this.ApplyGenreFilter(filteredResults);
+    }
+    //Apply Year Filter
+    filteredResults = this.ApplyYearFilter(filteredResults);
+    //Apply Votes filter
+    filteredResults = this.ApplyVotesFilter(filteredResults);
+
+    //Assign all filtered back to UI
+    if(!filteredResults.length){
+      this.emptyResults = true;
+      return;
+    }
+    //Apply Rotten Tomatoes Ratings
+    this.ApplyRottenRatings(filteredResults);
+    this.results = filteredResults;
+  }
+
+  ApplyRottenRatings(resultsToBeFiltered: any[]){
+    resultsToBeFiltered.forEach((result) => {
+      var apiLink = this.link + result.title;
+      this.http.request(apiLink)
+        .subscribe((res: Response) => {
+          let rating = res.json();
+          rating = rating.Ratings;
+          if(rating.length < 2)
+            return;
+          rating = rating[1].Value.slice(0, -1);
+          rating = parseInt(rating)/10;
+          this.movieTitleToRottenRatingMap[result.title] = rating;
+        });
+    });
+  }
+
+  ApplyYearFilter(resultsToBeFiltered: any[]):any[]{
+    let FilteredResults = [];
+    //Apply Filter
+    if(this.Year && this.Year != ""){
+      resultsToBeFiltered.forEach((result) => {
+        let release_date = result.release_date.slice(0,4);
+        if(release_date === this.Year){
+          FilteredResults.push(result);
+        }
+      });
+    } else {
+      return(resultsToBeFiltered);
+    }
+    return(FilteredResults);
+  }
+
+  ApplyVotesFilter(resultsToBeFiltered: any[]):any[]{
+    return([]);
+  }
+
+  ApplyGenreFilter(resultsToBeFiltered: any[]):any[]{
+    return([]);
+  }
+
   //Get results for Title based search
   GetTitleSearchResults():any[]{
     //Search by title
