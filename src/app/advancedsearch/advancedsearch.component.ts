@@ -201,6 +201,10 @@ export class AdvancedsearchComponent implements OnInit {
     return(FilteredResults);
   }
 
+  ApplyVotesFilter(resultsToBeFiltered: any[]):any[]{
+    return([])
+  }
+
   //Get results for Title based search
   GetTitleSearchResults():any[]{
     //Search by title
