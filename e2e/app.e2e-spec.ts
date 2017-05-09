@@ -39,6 +39,12 @@ describe('moviecritic App', () => {
     expect(h3_elements.getText()).toContain('Turbo');
   });
 
+  it('should test advanced search page for field Title', () => {
+    browser.get(`${commonUrl}/advancedsearch`);
+    var h3_elements = element(by.tagName("h3"));
+    expect(h3_elements.getText()).toContain('Keyword/Title');
+  });
+
 
 });
 
