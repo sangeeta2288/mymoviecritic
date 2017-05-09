@@ -158,6 +158,15 @@ export class AdvancedsearchComponent implements OnInit {
     filteredResults = this.ApplyYearFilter(filteredResults);
     //Apply Votes filter
     filteredResults = this.ApplyVotesFilter(filteredResults);
+
+    //Assign all filtered back to UI
+    if(!filteredResults.length){
+      this.emptyResults = true;
+      return;
+    }
+    //Apply Rotten Tomatoes Ratings
+    this.ApplyRottenRatings(filteredResults);
+    this.results = filteredResults;
   }
 
   //Get results for Title based search
