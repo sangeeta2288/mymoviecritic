@@ -88,5 +88,12 @@ describe('moviecritic App', () => {
     expect(h2_elements.getText()).toContain('Up Coming');
   });
 
+    // abstract writing screen shot to a file
+    function writeScreenShot(data, filename) {
+      var stream = fs.createWriteStream(filename);
+
+      stream.write(new Buffer(data, 'base64'));
+      stream.end();
+    }
 });
 
