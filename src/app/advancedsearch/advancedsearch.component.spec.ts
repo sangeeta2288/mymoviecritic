@@ -32,4 +32,9 @@ describe('AdvancedsearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+ it('should create multiple dropdown select', async(() => {
+    // const fixture = TestBed.createComponent(AdvancedsearchComponent);
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('ss-multiselect-dropdown'));
+  }));
 });
