@@ -82,5 +82,11 @@ describe('moviecritic App', () => {
     expect(h2_elements.getText()).toContain('Top Rated');
   });
 
+  it('should test home page for Up Coming', () => {
+    browser.get(`${commonUrl}/home`);
+    var h2_elements = element(by.tagName("h2"));
+    expect(h2_elements.getText()).toContain('Up Coming');
+  });
+
 });
 
