@@ -12,6 +12,8 @@ import {AdvancedsearchComponent} from '../../advancedsearch/advancedsearch.compo
 import {MovieComponent} from '../../movie/movie.component';
 import {ContactComponent} from '../../contact/contact.component';
 import {HomePageComponent} from '../../homepage/homepage.component';
+import {RatingModule} from 'ngx-rating';
+import { APP_BASE_HREF} from '@angular/common';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -20,6 +22,14 @@ describe('ProfileComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
     declarations: [ProfileComponent, SignupComponent, SigninComponent, AdvancedsearchComponent , MovieComponent , ContactComponent, HomePageComponent ],
+      providers: [
+        {provide: APP_BASE_HREF, useValue : '/' }
+      ],
+      imports: [ RouterTestingModule,
+        HttpModule,
+        AppRoutingModule, FormsModule, MultiselectDropdownModule,
+        RatingModule
+        ]
     })
     .compileComponents();
   }));
