@@ -26,6 +26,19 @@ describe('moviecritic App', () => {
     expect(h3_elements.getText()).toContain('Furious 7');
   });
 
+  it('should test successful search scenario 2 on advanced search page - Turbo movie', () => {
+    browser.get(`${commonUrl}/advancedsearch`);
+    browser.waitForAngular();
+
+    element(by.id("TitleField")).sendKeys('speed');
+    browser.waitForAngular();
+    element(by.css(".btn.btn-success")).click();
+    browser.waitForAngular();
+
+    var h3_elements = element.all(by.tagName("h3"));
+    expect(h3_elements.getText()).toContain('Turbo');
+  });
+
 
 });
 
