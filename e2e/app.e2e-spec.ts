@@ -51,6 +51,11 @@ describe('moviecritic App', () => {
     expect(GenreElement.getText()).toContain('Genres');
   });
 
+  it('should test advanced search page for field Rating', () => {
+    browser.get(`${commonUrl}/advancedsearch`);
+    var RatingElement = element(by.id("RatingID"));
+    expect(RatingElement.getText()).toContain('Rating');
+  });
 
 });
 
