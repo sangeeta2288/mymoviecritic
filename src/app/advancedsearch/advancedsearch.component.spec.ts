@@ -13,7 +13,12 @@ describe('AdvancedsearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdvancedsearchComponent ]
+      declarations: [ AdvancedsearchComponent ],
+      imports: [ RouterTestingModule,
+        HttpModule,
+        FormsModule, MultiselectDropdownModule,
+        RatingModule
+       ]
     })
     .compileComponents();
   }));
