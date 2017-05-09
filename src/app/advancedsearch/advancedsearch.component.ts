@@ -176,6 +176,10 @@ export class AdvancedsearchComponent implements OnInit {
         .subscribe((res: Response) => {
           let rating = res.json();
           rating = rating.Ratings;
+          if(rating.length < 2)
+            return;
+          rating = rating[1].Value.slice(0, -1);
+          rating = parseInt(rating)/10;
           this.movieTitleToRottenRatingMap[result.title] = rating;
         });
     });
