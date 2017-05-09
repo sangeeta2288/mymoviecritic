@@ -202,7 +202,11 @@ export class AdvancedsearchComponent implements OnInit {
   }
 
   ApplyVotesFilter(resultsToBeFiltered: any[]):any[]{
-    return([])
+    return([]);
+  }
+
+  ApplyGenreFilter(resultsToBeFiltered: any[]):any[]{
+    return([]);
   }
 
   //Get results for Title based search
