@@ -222,7 +222,20 @@ export class AdvancedsearchComponent implements OnInit {
   }
 
   ApplyVotesFilter(resultsToBeFiltered: any[]): any[] {
-    return([]);
+    const FilteredResults = [];
+    // Apply Genre Filter
+    if(this.Votes && this.Votes != ""){
+      resultsToBeFiltered.forEach((result) => {
+        let movie_votes = result.vote_count;
+        let filter_votes_num = parseInt(this.Votes);
+        if(movie_votes >= filter_votes_num) {
+          FilteredResults.push(result);
+        }
+      });
+    } else {
+      return(resultsToBeFiltered);
+    }
+    return(FilteredResults);
   }
 
   // Get results for Title based search
