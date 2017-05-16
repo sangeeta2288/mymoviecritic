@@ -1,24 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SigninComponent } from './signin.component';
-import { FormsModule } from '@angular/forms';
+import { MovieComponent } from './movie.component';
 import { HttpModule } from '@angular/http';
-import { RouterTestingModule } from '@angular/router/testing';
 
-describe('SigninComponent', () => {
-  let component: SigninComponent;
-  let fixture: ComponentFixture<SigninComponent>;
+describe('MovieComponent', () => {
+  let component: MovieComponent;
+  let fixture: ComponentFixture<MovieComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SigninComponent ],
-      imports: [  RouterTestingModule, HttpModule, FormsModule]
+      declarations: [ MovieComponent ],
+      imports: [
+        HttpModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SigninComponent);
+    fixture = TestBed.createComponent(MovieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -28,7 +27,10 @@ describe('SigninComponent', () => {
   });
 
   it('should create input', async(() => {
+    // const fixture = TestBed.createComponent(MovieComponent);
+    // fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('input')).toBeTruthy();
-  }));
+    }));
 });
+
