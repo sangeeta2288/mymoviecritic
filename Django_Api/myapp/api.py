@@ -108,7 +108,7 @@ class CriticResource(ModelResource):
         resource_name = 'critic'
 
 class ReviewResource(ModelResource):
-    Critic = fields.ForeignKey(CriticResource, 'critic')
+    Critic = fields.ForeignKey(CriticResource, 'critic',full = True)
 
     class Meta:
         queryset = Review.objects.all()
