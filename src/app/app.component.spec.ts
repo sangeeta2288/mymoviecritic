@@ -51,12 +51,12 @@ describe('AppComponent', () => {
   it('should create app header', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-header'));
+    expect(compiled.querySelector('app-header')).toBeTruthy();
   }));
 
   it('should create router-outlet', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('router-outlet'));
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   }));
 });

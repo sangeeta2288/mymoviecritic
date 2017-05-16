@@ -43,4 +43,9 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create multiple dropdown select', async(() => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('ss-multiselect-dropdown')).toBeTruthy();
+  }));
 });
