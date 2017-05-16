@@ -30,7 +30,7 @@ describe('MovieComponent', () => {
     // const fixture = TestBed.createComponent(MovieComponent);
     // fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('input'));
+    expect(compiled.querySelector('input')).toBeTruthy();
     }));
 });
 

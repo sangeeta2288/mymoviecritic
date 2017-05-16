@@ -30,6 +30,6 @@ describe('SignupComponent', () => {
   });
   it('should create input', async(() => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('input'));
+    expect(compiled.querySelector('input')).toBeTruthy();
   }));
 });
