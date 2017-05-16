@@ -108,7 +108,7 @@ class CriticResource(ModelResource):
         resource_name = 'critic'
 
 class ReviewResource(ModelResource):
-    Critic = fields.ForeignKey(CriticResource, 'critic')
+    Critic = fields.ForeignKey(CriticResource, 'critic',full = True)
 
     class Meta:
         queryset = Review.objects.all()
@@ -140,16 +140,19 @@ class ReviewResource(ModelResource):
 
 
 class UserCriticResource(ModelResource):
-    Critic = fields.ForeignKey(CriticResource, 'critic')
-    User = fields.ForeignKey(UserResource,'user')
+    Critic = fields.ForeignKey(CriticResource, 'critic', full=True)
+    User = fields.ForeignKey(UserResource,'user',full = True)
 
     class Meta:
         queryset = UserCritic.objects.all()
         resource_name = 'usercritic'
-        allowed_methods = ['post' , 'get']
+        allowed_methods = ['post', 'get','delete']
         object_class = User, Critic
         authentication = Authentication()
         authorization = Authorization()
+        filtering = {
+            "id": ('exact',),
+        }    
     def obj_create(self, bundle, request=None, **kwargs):
                 try:
                     bundle = super(UserCriticResource, self).obj_create(bundle, usercritic=bundle.request)
@@ -157,6 +160,15 @@ class UserCriticResource(ModelResource):
                 except IntegrityError:
                     raise BadRequest('Error')
                 return bundle
+  
+    # def obj_delete(self, bundle, request=None, **kwargs):
+    #     try:
+    #         UserCritic.objects.filter(id=bundle.data.id).delete()
+    #         bundle =  super(UserCriticResource, self).obj_delete(bundle, usercritic=bundle.request)                      
+    #     except IntegrityError:
+    #         raise BadRequest('Error')
+    #     return bundle
+         
 
 v1_api = Api(api_name='v1')
 v1_api.register(CriticResource())
