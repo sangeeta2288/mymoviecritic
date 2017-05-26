@@ -3,9 +3,9 @@
    <div class="row">
       <div class="col-lg-12">
          <div class="input-group">
-            <input name="search" #searchTerm (keyup.enter)="performSearch(searchTerm)" type="text" class="form-control" placeholder="Search for...">
+            <input name="search" #searchTerm (keyup.enter)="performSearch(searchTerm?.value)" type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
-            <button (click)="performSearch(searchTerm)" class="btn btn-default" type="button">Go!</button>
+            <button (click)="performSearch(searchTerm?.value)" class="btn btn-default" type="button">Go!</button>
             </span>
          </div>
          <br>
@@ -48,7 +48,7 @@
          <div class="row">
             <div *ngFor="let item of reviews.objects" class="col-md-4 portfolio-item">
                <h3>
-                  <a href="#">{{item.critic?.name}}</a> Rating : {{item.Rating}}
+                  <a href="#">{{item.Critic?.name}}</a> Rating : {{item.Rating}}
                </h3>
                <p>{{item.review}}.</p>
             </div>
