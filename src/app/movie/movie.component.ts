@@ -22,27 +22,26 @@ export class MovieComponent implements OnInit {
     critics;
     avg;
     customavg;
+    route;
+    router;
+    resp;
     
-    ngOnInit() {        
+    
+    
+  constructor(http: Http,route: ActivatedRoute) {
+        this.http = http;
+        this.route = route;
+    }
+
+    ngOnInit() { 
+       this.route.queryParams.subscribe((params) => {
+            this.title = params['title'];
+            console.log(this.title);
+        });
+        this.performSearch(this.title);       
        
     }
-    
-  constructor(http: Http) {
-        this.http = http;
 
-    }
-
-    performSearch(searchTerm: HTMLInputElement): void {
-        var apiLink = this.link + searchTerm.value;
-        this.http.request(apiLink)
-            .subscribe((res: Response) => {
-                  this.show = false;
-                  this.giphies = res.json();
-                  console.log(this.giphies);
-                  this.makehttp(this.giphies);
-                  
-
-                 
             });
   }
     calculateavg(reviews:any): any {
