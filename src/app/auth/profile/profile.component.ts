@@ -63,4 +63,16 @@ export class ProfileComponent implements OnInit {
             this.notmycritics = this.critics.objects.filter(function (x) { return a.indexOf(x.id) == -1; });
             console.log(this.notmycritics);
         });}
+   addcritic(additem) {
+      
+        console.log(additem);
+       let user = "/api/v1/user/" + this.currentUser.id + "/";
+       let critic = additem.resource_uri;
+      let params = JSON.stringify({ Critic: critic, User: user, name: "k" });
+        console.log(params);
+        // let params = 'json=' + json;
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        });
+    };
 }
