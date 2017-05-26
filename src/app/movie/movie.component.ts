@@ -42,7 +42,20 @@ export class MovieComponent implements OnInit {
        
     }
 
+    performSearch(searchTerm): void {
+        if (searchTerm) {
+            let apiLink = this.link + searchTerm;
+            this.http.request(apiLink)
+                .subscribe( (res) => {
+                this.show = false;
+                this.resp = res.json();
+                console.log(this.resp);
+                if (this.resp.Response !== "False") {
+                    this.giphies = this.resp;
+                    this.makehttp(this.giphies);
+                }
             });
+        }
   }
     calculateavg(reviews:any): any {
       let values = reviews.objects.map(function(y){return y.Rating});;
