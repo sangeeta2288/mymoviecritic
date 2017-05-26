@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -17,8 +18,9 @@ export class HomePageComponent implements OnInit {
 	commonLink = 'https://api.themoviedb.org/3/';
 	imageLink = 'https://image.tmdb.org/t/p/w500/';
 
-	constructor(http: Http) {
-		this.http = http;
+	constructor(http: Http,private router: Router,
+              private route: ActivatedRoute) {
+				this.http = http;
 	}
 
 	
@@ -31,6 +33,7 @@ export class HomePageComponent implements OnInit {
 		this.http.request(nowplayingApiLink)
 		 .subscribe((res: Response)=> {
 			this.nowplayingmovies = (res.json()).results;
+			console.log(this.nowplayingmovies);
 		 });
 		
 		console.log(topratedApiLink);
