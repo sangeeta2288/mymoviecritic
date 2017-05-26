@@ -84,15 +84,15 @@ export class MovieComponent implements OnInit {
                                       
 
      calculatcustomeavg(reviews:any,critics:any): any {
-       
-      let usercritics = critics.objects.filter(function(x){return x.User.id == 2});
+      let currentUser = JSON.parse(localStorage.getItem('currentUser')); 
+      let usercritics = critics.objects.filter(function(x){return x.User.id == currentUser.id});
       let usercriticsid = usercritics.map(function(x){return x.Critic.id})
       console.log(usercriticsid);
 
       console.log(reviews);
        this.userreviews = reviews.objects.filter(function(y){
          for(let x of usercriticsid){
-           if(y.critic.id===x){
+           if(y.Critic.id===x){
              return true;
            }
          }
