@@ -8102,7 +8102,7 @@ var MovieComponent = (function () {
         this.route = route;
         this.router = router;
         this.title = '';
-        this.link = 'https://www.omdbapi.com/?t=';
+        this.link = 'https://www.omdbapi.com/?apikey=11046d35&t=';
         this.mylink = 'https://mydjangoapp57.herokuapp.com/api/v1/review/?format=json&tid=';
         this.myuserlink = "https://mydjangoapp57.herokuapp.com/api/v1/usercritic";
         this.show = true;

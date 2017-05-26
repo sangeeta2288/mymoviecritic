@@ -84,9 +84,17 @@ WSGI_APPLICATION = 'Django_Api.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
+    # 'MyMovieCritic': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'der0p7p97n69dc',
+        'USER': 'koklcdhowhlkmm',
+        'PASSWORD': 'e12e3fdb995d1dbbec9aeae77097a5be07bb0311f34350b59c700e1ece90a1b8',
+        'HOST': 'ec2-54-163-252-55.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 

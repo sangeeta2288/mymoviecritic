@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import {imdb} from 'imdb-api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -9,8 +9,8 @@ import {imdb} from 'imdb-api';
 })
 export class MovieComponent implements OnInit {
 
-   title = 'MyMovieCritic';
-    link = 'https://www.omdbapi.com/?t=';
+   title = '';
+    link = 'https://www.omdbapi.com/?apikey=11046d35&t=';
     mylink = 'http://127.0.0.1:8000/api/v1/review/?format=json&tid=';
     myuserlink = "http://127.0.0.1:8000/api/v1/usercritic";
     http: Http;
@@ -22,28 +22,40 @@ export class MovieComponent implements OnInit {
     critics;
     avg;
     customavg;
+    route;
+    router;
+    resp;
     
-    ngOnInit() {        
+    
+    
+  constructor(http: Http,route: ActivatedRoute) {
+        this.http = http;
+        this.route = route;
+    }
+
+    ngOnInit() { 
+       this.route.queryParams.subscribe((params) => {
+            this.title = params['title'];
+            console.log(this.title);
+        });
+        this.performSearch(this.title);       
        
     }
-    
-  constructor(http: Http) {
-        this.http = http;
 
-    }
-
-    performSearch(searchTerm: HTMLInputElement): void {
-        var apiLink = this.link + searchTerm.value;
-        this.http.request(apiLink)
-            .subscribe((res: Response) => {
-                  this.show = false;
-                  this.giphies = res.json();
-                  console.log(this.giphies);
-                  this.makehttp(this.giphies);
-                  
-
-                 
+    performSearch(searchTerm): void {
+        if (searchTerm) {
+            let apiLink = this.link + searchTerm;
+            this.http.request(apiLink)
+                .subscribe( (res) => {
+                this.show = false;
+                this.resp = res.json();
+                console.log(this.resp);
+                if (this.resp.Response !== "False") {
+                    this.giphies = this.resp;
+                    this.makehttp(this.giphies);
+                }
             });
+        }
   }
     calculateavg(reviews:any): any {
       let values = reviews.objects.map(function(y){return y.Rating});;
@@ -72,15 +84,15 @@ export class MovieComponent implements OnInit {
                                       
 
      calculatcustomeavg(reviews:any,critics:any): any {
-       
-      let usercritics = critics.objects.filter(function(x){return x.User.id == 2});
+      let currentUser = JSON.parse(localStorage.getItem('currentUser')); 
+      let usercritics = critics.objects.filter(function(x){return x.User.id == currentUser.id});
       let usercriticsid = usercritics.map(function(x){return x.Critic.id})
       console.log(usercriticsid);
 
       console.log(reviews);
        this.userreviews = reviews.objects.filter(function(y){
          for(let x of usercriticsid){
-           if(y.critic.id===x){
+           if(y.Critic.id===x){
              return true;
            }
          }
