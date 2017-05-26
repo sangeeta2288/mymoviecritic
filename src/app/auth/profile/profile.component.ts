@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
         console.log(this.user);
       })};
       
-  critics() {
   allcritics() {
     this.http.request(this.criticlink)
       .subscribe((res: Response) => {
@@ -63,6 +62,7 @@ export class ProfileComponent implements OnInit {
             this.notmycritics = this.critics.objects.filter(function (x) { return a.indexOf(x.id) == -1; });
             console.log(this.notmycritics);
         });}
+
    addcritic(additem) {
       
         console.log(additem);
@@ -73,6 +73,11 @@ export class ProfileComponent implements OnInit {
         // let params = 'json=' + json;
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
+        this.http.post('http://127.0.0.1:8000/api/v1/usercritic/', params, {
+            headers: headers
+        }).subscribe( (data) => {
+            console.log('received response');
+            this.getmycritics();
         });
     };
 }
