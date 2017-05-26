@@ -50,4 +50,10 @@ export class ProfileComponent implements OnInit {
         this.critics = res.json();
         console.log(this.critics);
     })};
+    getmycritics() {
+        this.http.request(this.myuserlink)
+            .subscribe((res) => {
+            this.usercritics = res.json();
+            console.log(this.mycritics);
+        });}
 }
