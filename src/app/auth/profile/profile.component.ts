@@ -55,5 +55,12 @@ export class ProfileComponent implements OnInit {
             .subscribe((res) => {
             this.usercritics = res.json();
             console.log(this.mycritics);
+            let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            console.log(currentUser.id);
+            this.mycritics = this.usercritics.objects.filter(function (x) { return x.User.id == currentUser.id; });
+            console.log(this.mycritics);
+            let a = this.mycritics.map(function (a) { return a.Critic.id; });
+            this.notmycritics = this.critics.objects.filter(function (x) { return a.indexOf(x.id) == -1; });
+            console.log(this.notmycritics);
         });}
 }
