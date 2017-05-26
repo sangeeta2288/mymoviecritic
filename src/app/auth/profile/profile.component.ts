@@ -80,4 +80,12 @@ export class ProfileComponent implements OnInit {
             this.getmycritics();
         });
     };
+    removecritic(removeitem) {
+        console.log(removeitem);
+        let removecritic = "http://127.0.0.1:8000/api/v1/usercritic/?id=" + removeitem.id;
+        this.http.delete(removecritic).subscribe((data) => {
+            console.log('received response');
+            this.getmycritics();
+        });
+    }; 
 }
