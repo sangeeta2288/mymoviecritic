@@ -44,8 +44,10 @@ export class ProfileComponent implements OnInit {
       })};
       
   critics() {
+  allcritics() {
     this.http.request(this.criticlink)
       .subscribe((res: Response) => {
-        this.critic = res.json();
+        this.critics = res.json();
+        console.log(this.critics);
     })};
 }
