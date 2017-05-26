@@ -11,7 +11,7 @@ class Critic(models.Model):
         return self.name
 
 class Review(models.Model):
-    MovieID = models.CharField(max_length=80)
+    MovieID = models.CharField(max_length=80,blank = True)
     Movietitle = models.CharField(max_length=80)
     critic = models.ForeignKey(Critic)
     review = models.TextField()
