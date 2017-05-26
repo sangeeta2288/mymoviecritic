@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import {imdb} from 'imdb-api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -9,8 +9,8 @@ import {imdb} from 'imdb-api';
 })
 export class MovieComponent implements OnInit {
 
-   title = 'MyMovieCritic';
-    link = 'https://www.omdbapi.com/?t=';
+   title = '';
+    link = 'https://www.omdbapi.com/?apikey=11046d35&t=';
     mylink = 'http://127.0.0.1:8000/api/v1/review/?format=json&tid=';
     myuserlink = "http://127.0.0.1:8000/api/v1/usercritic";
     http: Http;
