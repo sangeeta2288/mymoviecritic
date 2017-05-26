@@ -60,6 +60,12 @@
                   <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel">
 
                   </ss-multiselect-dropdown>
+                  <label style="vertical-align: top">My Critics : </label>
+                   <ul >
+                     <li *ngFor="let critic of mycritics;">
+                     <button  (click) = "removecritic(critic)" type="button">Remove</button> 
+                     {{critic.Critic.name}}  
+                    </li>
                 </div>
 
                 <button type="submit" class="btn">Update</button>
