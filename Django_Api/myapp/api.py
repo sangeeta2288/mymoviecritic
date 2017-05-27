@@ -17,13 +17,13 @@ from tastypie.http import HttpUnauthorized, HttpForbidden
 from django.conf.urls import url
 from tastypie.utils import trailing_slash
 
-
+#Api to return users
 class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
         resource_name = 'user'
 
-
+#Api to handle POST requests for creating a user
 class CreateUserResource(ModelResource):
         class Meta:
             allowed_methods = ['post']
@@ -47,6 +47,7 @@ class CreateUserResource(ModelResource):
                 raise BadRequest('That username already exists')
             return bundle
 
+#Api to handle USers login
 class UserLoginResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
@@ -75,6 +76,7 @@ class UserLoginResource(ModelResource):
         password = data.get('password', '')
 
         user = authenticate(username=username, password=password)
+        #check if user is active
         if user:
             if user.is_active:
                 login(request, user)
@@ -92,7 +94,7 @@ class UserLoginResource(ModelResource):
                 'success': False,
                 'reason': 'incorrect',
                 }, HttpUnauthorized )
-
+    #To handle users logout
     def logout(self, request, **kwargs):
         self.method_check(request, allowed=['get'])
         if request.user and request.user.is_authenticated():
@@ -101,12 +103,13 @@ class UserLoginResource(ModelResource):
         else:
             return self.create_response(request, { 'success': False }, HttpUnauthorized)
 
-
+#API to get critics list
 class CriticResource(ModelResource):
     class Meta:
         queryset = Critic.objects.all()
         resource_name = 'critic'
 
+#API to get complete Reviews
 class ReviewResource(ModelResource):
     Critic = fields.ForeignKey(CriticResource, 'critic',full = True)
 
@@ -114,9 +117,6 @@ class ReviewResource(ModelResource):
         queryset = Review.objects.all()
         resource_name = 'review'
 
-    # def dehydrate(self, bundle):
-    #     bundle.data['tid'] = bundle.obj.tid
-    #     return bundle
 
     def build_filters(self, filters=None):
         res = super(ReviewResource, self).build_filters(filters)
@@ -130,6 +130,7 @@ class ReviewResource(ModelResource):
 
     def apply_filters(self, request, applicable_filters):
         tid = applicable_filters.pop('tid', None)
+        #filter out revies with give movie ID
         qs = super(ReviewResource, self).apply_filters(request, applicable_filters)
         if tid is not None:
              org = qs.filter(MovieID = tid)
@@ -137,10 +138,9 @@ class ReviewResource(ModelResource):
                  return qs.filter(MovieID = tid)
              else:
                  return qs.filter(MovieID = 'default')    
-                # release_date__lte=datetime.date(tid,12,31))
         return qs
 
-
+#API to get the complete USer critcs assoc
 class UserCriticResource(ModelResource):
     Critic = fields.ForeignKey(CriticResource, 'critic', full=True)
     User = fields.ForeignKey(UserResource,'user',full = True)
@@ -148,10 +148,12 @@ class UserCriticResource(ModelResource):
     class Meta:
         queryset = UserCritic.objects.all()
         resource_name = 'usercritic'
+        #can add or delete critc from userassoc
         allowed_methods = ['post', 'get','delete']
         object_class = User, Critic
         authentication = Authentication()
         authorization = Authorization()
+        #filter the result by userid
         filtering = {
             "id": ('exact',),
         }    
@@ -163,14 +165,6 @@ class UserCriticResource(ModelResource):
                     raise BadRequest('Error')
                 return bundle
   
-    # def obj_delete(self, bundle, request=None, **kwargs):
-    #     try:
-    #         UserCritic.objects.filter(id=bundle.data.id).delete()
-    #         bundle =  super(UserCriticResource, self).obj_delete(bundle, usercritic=bundle.request)                      
-    #     except IntegrityError:
-    #         raise BadRequest('Error')
-    #     return bundle
-         
 
 v1_api = Api(api_name='v1')
 v1_api.register(CriticResource())
