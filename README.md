@@ -36,14 +36,11 @@ Back_End of this project is created using Django version 1.8, project folder is 
 
 #Install the Dependencies
 
-Required dependencies of this django project can be found in the requirments.txt file in Django_Api folder use `pip` to install them
+Required dependencies of this django project can be found in the `requirments.txt` file in Django_Api folder use `pip` to install them
 
 #Developement Server
 
-Run `python manaage.py runserver` to start the backend server
-
-
-
+Run `python manaage.py runserver` inside the Django_Api to start the backend server
 
 
 
