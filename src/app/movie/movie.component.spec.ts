@@ -9,7 +9,7 @@ describe('MovieComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieComponent ],
+      declarations: [MovieComponent],
       imports: [
         HttpModule]
     })
@@ -31,6 +31,6 @@ describe('MovieComponent', () => {
     // fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('input')).toBeTruthy();
-    }));
+  }));
 });
 

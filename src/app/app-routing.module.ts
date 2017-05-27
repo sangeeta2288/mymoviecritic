@@ -8,13 +8,15 @@ import { HomePageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 
+//Declaring Routes
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'advancedsearch', component: AdvancedsearchComponent },
   { path: 'movie', component: MovieComponent },
   { path: 'home', component: HomePageComponent },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/movie',
     pathMatch: 'full'
   },

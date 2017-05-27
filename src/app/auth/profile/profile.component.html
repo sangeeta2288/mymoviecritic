@@ -1,22 +1,21 @@
+<!-- CSS -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../assets/css/form-elements.css">
+<link rel="stylesheet" href="../../../assets/css/style.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-  <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../../assets/css/form-elements.css">
-  <link rel="stylesheet" href="../../../assets/css/style.css">
+<!-- Javascript -->
+<script src="../../../assets/js/jquery-1.11.1.min.js"></script>
+<script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../assets/js/scripts.js"></script>
 
-  <!-- Javascript -->
-  <script src="../../../assets/js/jquery-1.11.1.min.js"></script>
-  <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../../../assets/js/scripts.js"></script>
-
-  <!-- Favicon and touch icons -->
-  <link rel="shortcut icon" href="../../../assets/ico/favicon.png">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../assets/ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../assets/ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="../../../assets/ico/apple-touch-icon-57-precomposed.png">
+<!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="../../../assets/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="../../../assets/ico/apple-touch-icon-57-precomposed.png">
 
 
 <!-- Top content -->
@@ -43,39 +42,37 @@
             </div>
             <div class="form-bottom">
               <!--<form role="form" action="" method="post" class="registration-form">-->
-                <div class="form-group">
+              <div class="form-group">
 
-                  <label>First Name :  {{ user.first_name }}</label>
-                </div>
+                <label>First Name :  {{ user.first_name }}</label>
+              </div>
 
-                <div class="form-group">
-                  <label>Last Name :  {{ user.last_name }}</label>
-                </div>
-                <div class="form-group">
-                  <label>Email :  {{ user.email }}</label>
-                </div>
-                <div class="form-group">
-                  <label style="vertical-align: top">My Critics : </label>
-                   <ul >
-                     <li *ngFor="let critic of mycritics;">
-                     <button  (click) = "removecritic(critic)" type="button">Remove</button> 
-                     {{critic.Critic.name}}  
-                    </li>
-                  </ul>       
-                
-                </div>
-                 <div class="form-group">
-                  <label style="vertical-align: top">Not My Critics : </label>
-                   <ul >
-                     <li *ngFor="let critic of notmycritics;">
-                     <button  (click) = "addcritic(critic)" type="button">Add</button> 
-                     {{critic.name}}  
-                    </li>
-                  </ul>       
-                
-                </div>
+              <div class="form-group">
+                <label>Last Name :  {{ user.last_name }}</label>
+              </div>
+              <div class="form-group">
+                <label>Email :  {{ user.email }}</label>
+              </div>
+              <div class="form-group">
+                <label style="vertical-align: top">My Critics : </label>
+                <ul>
+                  <li *ngFor="let critic of mycritics;">
+                    <button (click)="removecritic(critic)" type="button">Remove</button> {{critic.Critic.name}}
+                  </li>
+                </ul>
 
-                
+              </div>
+              <div class="form-group">
+                <label style="vertical-align: top">Not My Critics : </label>
+                <ul>
+                  <li *ngFor="let critic of notmycritics;">
+                    <button (click)="addcritic(critic)" type="button">Add</button> {{critic.name}}
+                  </li>
+                </ul>
+
+              </div>
+
+
               <!--</form>-->
             </div>
           </div>
@@ -87,7 +84,3 @@
   </div>
 
 </div>
-
-
-
-
