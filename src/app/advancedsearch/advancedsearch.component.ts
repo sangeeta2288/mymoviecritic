@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
-import {RatingModule} from 'ngx-rating';
+import { RatingModule } from 'ngx-rating';
 
 @Component({
   selector: 'app-advancedsearch',
@@ -46,9 +46,9 @@ export class AdvancedsearchComponent implements OnInit {
     this.myGenres = [];
     const genreApiLink = `${this.commonLink}genre/movie/list?api_key=${this.api_key}`;
     this.http.request(genreApiLink)
-        .subscribe((res: Response) => {
-          this.myGenres = res.json().genres;
-         });
+      .subscribe((res: Response) => {
+        this.myGenres = res.json().genres;
+      });
   }
 
   // called on submit (click)
@@ -99,9 +99,9 @@ export class AdvancedsearchComponent implements OnInit {
     const extLink = `${this.commonLink}genre/${this.Genre}/movies?api_key=${this.api_key}`;
 
     this.http.request(extLink)
-    .subscribe((res: Response) => {
+      .subscribe((res: Response) => {
         this.results = (res.json()).results;
-    });
+      });
   }
 
   // called on Reset (click)
@@ -119,13 +119,13 @@ export class AdvancedsearchComponent implements OnInit {
   ValidateInputs(): string {
     // If blank search warn user.
     if ((!this.Genre || !this.Genre.length) && (!this.Title || this.Title === '')) {
-      return('At-least one of Genre or Title value should be present to perform search!!');
+      return ('At-least one of Genre or Title value should be present to perform search!!');
     }
     if (this.Year !== '' && !(/^\d{4}$/.test(this.Year))) {
-      return('Invalid value in Year field, should contain number!!');
+      return ('Invalid value in Year field, should contain number!!');
     }
     if (this.Votes !== '' && !(/^\d{4}$/.test(this.Votes))) {
-      return('Invalid value in Votes field, should contain number!!');
+      return ('Invalid value in Votes field, should contain number!!');
     }
   }
 
@@ -143,7 +143,7 @@ export class AdvancedsearchComponent implements OnInit {
           this.emptyResults = true;
         }
       });
-    return([]);
+    return ([]);
   }
 
   ApplyOtherFilters(resultsToBeFiltered: any[], GenreApplied: boolean): void {
@@ -195,17 +195,17 @@ export class AdvancedsearchComponent implements OnInit {
         }
       });
     } else {
-      return(resultsToBeFiltered);
+      return (resultsToBeFiltered);
     }
-    return(FilteredResults);
+    return (FilteredResults);
   }
 
-  ApplyGenreFilter(resultsToBeFiltered: any[]):any[] {
+  ApplyGenreFilter(resultsToBeFiltered: any[]): any[] {
     const GenreFilteredResults = [];
     // Apply Genre Filter
-    if(this.Genre && this.Genre.length > 0){
+    if (this.Genre && this.Genre.length > 0) {
       resultsToBeFiltered.forEach((result) => {
-        if(result.genre_ids.length > 0){
+        if (result.genre_ids.length > 0) {
           const currentGenres = result.genre_ids;
           currentGenres.forEach((genre) => {
             if (this.Genre.includes(genre)) {
@@ -216,47 +216,47 @@ export class AdvancedsearchComponent implements OnInit {
         }
       });
     } else {
-      return(resultsToBeFiltered);
+      return (resultsToBeFiltered);
     }
-    return(GenreFilteredResults);
+    return (GenreFilteredResults);
   }
 
   ApplyVotesFilter(resultsToBeFiltered: any[]): any[] {
     const FilteredResults = [];
     // Apply Genre Filter
-    if(this.Votes && this.Votes != ""){
+    if (this.Votes && this.Votes != "") {
       resultsToBeFiltered.forEach((result) => {
         let movie_votes = result.vote_count;
         let filter_votes_num = parseInt(this.Votes);
-        if(movie_votes >= filter_votes_num) {
+        if (movie_votes >= filter_votes_num) {
           FilteredResults.push(result);
         }
       });
     } else {
-      return(resultsToBeFiltered);
+      return (resultsToBeFiltered);
     }
-    return(FilteredResults);
+    return (FilteredResults);
   }
 
   // Get results for Title based search
   GetTitleSearchResults(): any[] {
     // Search by title
-    return([]);
+    return ([]);
   }
 
   // Get results for Genre based search
   GetGenreSearchResults(): any[] {
-    return([]);
+    return ([]);
   }
 
   // Here we get list of casts by taking cast field's value
   GetCastListByKeyword(): any[] {
-    return([]);
+    return ([]);
   }
 
   GetSelectedGenres(): any[] {
     if (!this.Genre || !this.Genre.length) {
-      return([]);
+      return ([]);
     }
 
     const selectedGenres = [];
@@ -270,6 +270,6 @@ export class AdvancedsearchComponent implements OnInit {
         }
       });
     });
-    return(selectedGenres);
+    return (selectedGenres);
   }
 }

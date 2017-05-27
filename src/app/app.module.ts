@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
-import {RatingModule} from "ngx-rating";
+import { RatingModule } from "ngx-rating";
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -29,9 +29,9 @@ import { AuthenticationService } from './auth/signin/authentication.service';
     HeaderComponent,
     AdvancedsearchComponent,
     ContactComponent,
-	HomePageComponent,
-  MovieComponent,
-  ProfileComponent
+    HomePageComponent,
+    MovieComponent,
+    ProfileComponent
 
   ],
   imports: [

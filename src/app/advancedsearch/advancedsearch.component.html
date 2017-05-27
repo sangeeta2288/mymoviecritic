@@ -5,44 +5,43 @@
     <strong>{{inValidInputMessage}}</strong>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-        <table style="width:56%;" class="common-border">
-          <tr style="width:100%">
-                <td class="center-text-align">
-                    <h3>Keyword/Title</h3>
-                </td>
-                <td class="center-text-align">
-                    <input [(ngModel)]="Title" type="text" class="form-control" id="TitleField"/>
-                </td>
-            </tr>
-          <tr style="width:50%">
-            <td style="width:50%" class="center-text-align" id="GenreList">
-                <h3>Genres</h3>
-            </td>
-            <td>
-                <ss-multiselect-dropdown [options]="myGenres" [(ngModel)]="Genre"
-                                         style="width:50%; transform: translate(100%, 0)">
-                </ss-multiselect-dropdown>
-            </td>
-          </tr>
-          <tr style="width:100%">
-                <td class="center-text-align" id="RatingID">
-                    <h3>Rating</h3>
-                </td>
-                <td>
-                    <rating [(ngModel)]="starsCount" [max]="10"></rating>
-                </td>
-            </tr>
-          <tr style="width:100%">
-                <td class="center-text-align" id="YearID">
-                    <h3>Year</h3>
-                </td>
-                <td class="center-text-align" >
-                    <input [(ngModel)]="Year" type="text" class="form-control"/>
-                </td>
-          </tr>
-          <!--<tr style="width:100%">
+    <div class="row">
+        <div class="col-sm-12">
+            <table style="width:56%;" class="common-border">
+                <tr style="width:100%">
+                    <td class="center-text-align">
+                        <h3>Keyword/Title</h3>
+                    </td>
+                    <td class="center-text-align">
+                        <input [(ngModel)]="Title" type="text" class="form-control" id="TitleField" />
+                    </td>
+                </tr>
+                <tr style="width:50%">
+                    <td style="width:50%" class="center-text-align" id="GenreList">
+                        <h3>Genres</h3>
+                    </td>
+                    <td>
+                        <ss-multiselect-dropdown [options]="myGenres" [(ngModel)]="Genre" style="width:50%; transform: translate(100%, 0)">
+                        </ss-multiselect-dropdown>
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td class="center-text-align" id="RatingID">
+                        <h3>Rating</h3>
+                    </td>
+                    <td>
+                        <rating [(ngModel)]="starsCount" [max]="10"></rating>
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td class="center-text-align" id="YearID">
+                        <h3>Year</h3>
+                    </td>
+                    <td class="center-text-align">
+                        <input [(ngModel)]="Year" type="text" class="form-control" />
+                    </td>
+                </tr>
+                <!--<tr style="width:100%">
                 <td class="center-text-align">
                     <h3>Cast</h3>
                 </td>
@@ -50,61 +49,63 @@
                     <input [(ngModel)]="Cast" type="text" class="form-control"/>
                 </td>
             </tr>-->
-          <tr style="width:100%">
-                <td class="center-text-align" id="VotesID">
-                    <h3>No. of votes (Minimum)</h3>
-                </td>
-                <td class="center-text-align">
-                    <input [(ngModel)]="Votes" type="text" class="form-control"/>
-                </td>
-          </tr>
-           <!-- blank row as separator-->
-          <tr style="height:20px"><td></td><td></td></tr>
-          <tr style="width:100%">
-                <td class="center-text-align">
-                    <button id="submitButton" class="btn btn-success" type="submit" (click)="Submit()">Submit</button>
-                </td>
-                <td class="center-text-align">
-                    <button class="btn btn-default" type="button" (click)="Reset()">
+                <tr style="width:100%">
+                    <td class="center-text-align" id="VotesID">
+                        <h3>No. of votes (Minimum)</h3>
+                    </td>
+                    <td class="center-text-align">
+                        <input [(ngModel)]="Votes" type="text" class="form-control" />
+                    </td>
+                </tr>
+                <!-- blank row as separator-->
+                <tr style="height:20px">
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="width:100%">
+                    <td class="center-text-align">
+                        <button id="submitButton" class="btn btn-success" type="submit" (click)="Submit()">Submit</button>
+                    </td>
+                    <td class="center-text-align">
+                        <button class="btn btn-default" type="button" (click)="Reset()">
                         <span class="glyphicon glyphicon-repeat"></span>
                         Reset
                     </button>
-                </td>
-            </tr>
-        </table>
-    </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div *ngFor="let item of results" class="col-md-12 portfolio-item">
-          <h3>
-            {{item.original_title}}
-         </h3>
-          <div class="row">
-            <div class="col-md-4 portfolio-item">
-               <img class="img-responsive" src="{{imageLink}}{{item.poster_path}}" alt="" style="width:240px;height:320px;">
-            </div>
-            <div class="col-md-8 portfolio-item" >
-               <div *ngIf="show; else elseBlock">Movie Details</div>
-               <ng-template #elseBlock>
-                  <h4>
-                     <span>
+            <h3>
+                {{item.original_title}}
+            </h3>
+            <div class="row">
+                <div class="col-md-4 portfolio-item">
+                    <img class="img-responsive" src="{{imageLink}}{{item.poster_path}}" alt="" style="width:240px;height:320px;">
+                </div>
+                <div class="col-md-8 portfolio-item">
+                    <div *ngIf="show; else elseBlock">Movie Details</div>
+                    <ng-template #elseBlock>
+                        <h4>
+                            <span>
                         <h3>Plot: </h3>
-                     </span>
-                     {{item.overview}}
-                  </h4>
-                  <br>
-                  <h3 >  MyMovieCritic: {{item.vote_average}}
-                    <span *ngIf="movieTitleToRottenRatingMap[item.title] && movieTitleToRottenRatingMap[item.title] > 0">
+                     </span> {{item.overview}}
+                        </h4>
+                        <br>
+                        <h3> MyMovieCritic: {{item.vote_average}}
+                            <span *ngIf="movieTitleToRottenRatingMap[item.title] && movieTitleToRottenRatingMap[item.title] > 0">
                       Rotten Tamatoes:{{movieTitleToRottenRatingMap[item.title]}}
                     </span>
-                  </h3>
-                  <!--<br>
+                        </h3>
+                        <!--<br>
                   <h3 >MetaCritic: {{giphies.Ratings[2].Value}}  Imdb Rating: {{giphies.Ratings[0].Value}}</h3>-->
-                  <br>
-                 <h4>Release Date: {{item.release_date}}</h4>
-                 <br>
-                 <h4>No. of votes: {{item.vote_count}}</h4>
-               </ng-template>
+                        <br>
+                        <h4>Release Date: {{item.release_date}}</h4>
+                        <br>
+                        <h4>No. of votes: {{item.vote_count}}</h4>
+                    </ng-template>
+                </div>
             </div>
-         </div>
         </div>
-  </div>
+    </div>
 </div>
