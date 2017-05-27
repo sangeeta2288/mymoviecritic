@@ -1,83 +1,84 @@
 <div class="container">
-   <!-- Page Header -->
-   <div class="row">
-      <div class="col-lg-12">
-         <div class="input-group">
-            <input name="search" #searchTerm (keyup.enter)="performSearch(searchTerm?.value)" type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input name="search" #searchTerm (keyup.enter)="performSearch(searchTerm?.value)" type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
             <button (click)="performSearch(searchTerm?.value)" class="btn btn-default" type="button">Go!</button>
             </span>
-         </div>
-         <br>
-         <h3  *ngIf="show">
-            {{giphies.Title}}
-         </h3>
-         <div class="row">
-            <div class="col-md-4 portfolio-item">
-               <img *ngIf="!show" class="img-responsive" src="{{giphies.Poster}}" alt="" style="width:240px;height:320px;">   
             </div>
-            <div class="col-md-8 portfolio-item" >
-               <div *ngIf="show; else elseBlock">Movie Details</div>
-               <ng-template #elseBlock>
-                  <h4>
-                     <span>
+            <br>
+            <h3 *ngIf="show">
+                {{giphies.Title}}
+            </h3>
+            <div class="row">
+                <div class="col-md-4 portfolio-item">
+                    <img *ngIf="!show" class="img-responsive" src="{{giphies.Poster}}" alt="" style="width:240px;height:320px;">
+                </div>
+                <div class="col-md-8 portfolio-item">
+                    <div *ngIf="show; else elseBlock">Movie Details</div>
+                    <ng-template #elseBlock>
+                        <h4>
+                            <span>
                         <h3>Plot: </h3>
-                     </span>
-                     {{giphies.Plot}}
-                  </h4>
-                  <br>
-                  <h3 > <span *ngIf="view; else eBlock">MyMovieCritic:{{avg}}/10</span>
-                  <ng-template #eBlock> MyMovieCritic:{{customavg}}/10 </ng-template>
-                  
-                  <span>Rotten Tomatoes:{{giphies.Ratings[1]?.Value}} </span></h3>
-                  <br>
-                  <h3 >MetaCritic: {{giphies.Ratings[2]?.Value}}  Imdb Rating: {{giphies.Ratings[0]?.Value}}</h3>
-                  <br>
-                  <div><button (click)="view = true" type="button" class="btn btn-primary">AllCritics</button>
-                  <button (click)="view = false" type="button" class="btn btn-primary">MyCritics</button>
-                  </div>
-               </ng-template>
-            </div>
-            <div>
-            </div>
-         </div>
-      </div>
-      <!-- /.row -->
-      <!-- Projects Row -->
-      <div *ngIf="view; else elseView">
-         <div class="row">
-            <div *ngFor="let item of reviews.objects" class="col-md-4 portfolio-item">
-               <h3>
-                  <a href="#">{{item.Critic?.name}}</a> Rating : {{item.Rating}}
-               </h3>
-               <p>{{item.review}}.</p>
-            </div>
-         </div>
+                     </span> {{giphies.Plot}}
+                        </h4>
+                        <br>
+                        <!--Diaplay of movie Details-->
+                        <h3> <span *ngIf="view; else eBlock">MyMovieCritic:{{avg}}/10</span>
+                            <ng-template #eBlock> MyMovieCritic:{{customavg}}/10 </ng-template>
 
-      </div>
-      <ng-template #elseView>
-         <div class="row">
-            <div *ngFor="let item of userreviews" class="col-md-4 portfolio-item">
-               <h3>
-                  <a href="#">{{item.critic?.name}}</a> Rating : {{item.Rating}}
-               </h3>
-               <p>{{item.review}}.</p>
+                            <span>Rotten Tomatoes:{{giphies.Ratings[1]?.Value}} </span></h3>
+                        <br>
+                        <h3>MetaCritic: {{giphies.Ratings[2]?.Value}} Imdb Rating: {{giphies.Ratings[0]?.Value}}</h3>
+                        <br>
+                        <!--Shift between usercritics and all critics-->
+                        <div><button (click)="view = true" type="button" class="btn btn-primary">AllCritics</button>
+                            <button (click)="view = false" type="button" class="btn btn-primary">MyCritics</button>
+                        </div>
+                    </ng-template>
+                </div>
+                <div>
+                </div>
             </div>
-         </div>
-      </ng-template>
-   </div>
-   <!-- /.row -->
-   <!-- Projects Row -->
-   <!-- /.row -->
-   <hr>
-   <!-- Footer -->
-   <footer>
-      <div class="row">
-         <div class="col-lg-12">
-            <p>Copyright &copy; MyMoviecritic 2017</p>
-         </div>
-      </div>
-      <!-- /.row -->
-   </footer>
+        </div>
+        <!-- /.row -->
+        <!-- Projects Row -->
+        <div *ngIf="view; else elseView">
+            <div class="row">
+                <div *ngFor="let item of reviews.objects" class="col-md-4 portfolio-item">
+                    <h3>
+                        <a href="#">{{item.Critic?.name}}</a> Rating : {{item.Rating}}
+                    </h3>
+                    <p>{{item.review}}.</p>
+                </div>
+            </div>
+
+        </div>
+        <ng-template #elseView>
+            <div class="row">
+                <div *ngFor="let item of userreviews" class="col-md-4 portfolio-item">
+                    <h3>
+                        <a href="#">{{item.critic?.name}}</a> Rating : {{item.Rating}}
+                    </h3>
+                    <p>{{item.review}}.</p>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <!-- /.row -->
+    <!-- Projects Row -->
+    <!-- /.row -->
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; MyMoviecritic 2017</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </footer>
 </div>
 <!-- /.container -->
